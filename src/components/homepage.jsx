@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import Pick from "./Pick";
 import Steps from "./Steps";
 import Details from "./Detail";

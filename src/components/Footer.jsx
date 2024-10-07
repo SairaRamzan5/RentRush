@@ -6,7 +6,6 @@ const Footer = () => {
         {/* Logo and tagline */}
         <div className="col-span-1">
           <img src="/src/assets/logo.svg" alt="RentRush Logo" className="mb-4" />
-          <p className="text-sm">Rides for the daily achievers</p>
         </div>
 
         {/* Company Links */}
@@ -20,34 +19,12 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Features Links */}
-        <div>
-          <h3 className="text-lg font-bold mb-4">Features</h3>
-          <ul className="space-y-2">
-            <li><a href="#" className="text-sm hover:underline">Vehicle Tracker</a></li>
-            <li><a href="#" className="text-sm hover:underline">iOS & Android Website</a></li>
-            <li><a href="#" className="text-sm hover:underline">Business Trips</a></li>
-            <li><a href="#" className="text-sm hover:underline">Locations</a></li>
-          </ul>
-        </div>
-
         {/* Contact Us */}
         <div className=''>
           <h3 className="text-lg font-bold mb-4">Contact Us</h3>
           <p className="text-sm break-words py-1">syedafatimamansoori@gmail.com</p>
           <p className="text-sm">+92 316 1500304</p>
           <p className="text-sm">Syeda Fatima Mansoor</p>
-        </div>
-
-        {/* Newsletter Signup */}
-        <div>
-          <h3 className="text-lg font-bold mb-4">Get deals and discounts</h3>
-          <p className="text-sm mb-2">Subscribe to our newsletter</p>
-          <input 
-            type="email" 
-            placeholder="Email" 
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
         </div>
       </div>
 
