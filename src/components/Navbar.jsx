@@ -45,8 +45,8 @@ const Navbar = () => {
             <li onClick={scrollToDetails} className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]">why choose us</li>
             <li className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]" onClick={scrollToTest}>Testimonials</li>
           </div>
-          <div className="flex space-x-4">
-            <Link to="/signup" className=" text-black px-4  rounded ">
+          <div className="flex space-x-4 justify-center items-center">
+            <Link to="/signup" className=" text-black px-4 rounded ">
               Register
             </Link>
             <Link

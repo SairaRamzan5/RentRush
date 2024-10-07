@@ -1,17 +1,18 @@
 import React from "react";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import Pick from "./Pick";
 import Steps from "./Steps";
 import Details from "./Detail";
 import Reason from "./Reason";
 import Variety from "./Variety";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 function HomePage() {
   return (
     <>
       <Navbar />
       <div>
-        <div className="flex flex-col background bg-center w-full">
+        <div className="flex flex-col background bg-center sm:w-auto md:w-auto lg:w-auto h-screen">
           <div className="info px-16 py-20 w-[50%]">
             <p className="text-sm py-9">
               100% Trusted Car Rental platform in Pakistan
@@ -24,16 +25,12 @@ function HomePage() {
               specific needs of car rental business owners. This easy-to-use car
               rental software will let you manage.
             </p>
-            <div className="buttons flex gap-3">
-              <button className="bg-[#C17D3C] rounded py-2 px-4 text-white">
-                Booking Now
-              </button>
-              <button className="text-white py-2 px-4 ">See all cars</button>
-            </div>
-          </div>
-          <div className="pickups flex flex-row justify-evenly my-1">
-            <Pick purpose={"Pick-up"} search={false} />
-            <Pick purpose={"Drop-off"} search={true} />
+            <Link
+              to="/signup"
+              className=" bg-[#C17D3C] py-2 text-white font-semibold px-5 rounded-md"
+            >
+              Register
+            </Link>
           </div>
         </div>
         <div className="flex flow-row justify-evenly py-3">

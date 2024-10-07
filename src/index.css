@@ -4,10 +4,14 @@
 .background{
     background-image: url("/src/assets/background.png");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .background1{
     background-image: url("/src/assets/background.png");
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .bg{
     background-image: url(/src/assets/city.png);
