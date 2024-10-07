@@ -74,8 +74,8 @@ function TestContainer() {
             <img src="/src/assets/dot.png" alt="" />
         </div>
         <div className="flex flex-row gap-4">
-          <img src="/src/assets/next.png" onClick={handlePrevious} alt="" />
-          <img src="/src/assets/previous.png" alt="" onClick={handleNext} />
+          <img src="/src/assets/next.png" onClick={handlePrevious} alt="next" className="cursor-pointer" />
+          <img src="/src/assets/previous.png" alt="previous" onClick={handleNext} className="cursor-pointer" />
         </div>
       </div>
     </div>

@@ -26,14 +26,18 @@ const Navbar = () => {
     }
   }
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="mx-auto px-4  flex justify-between items-center">
         <div className="flex items-center">
-          <img
-            src="/src/assets/logo.svg"
-            alt="Logo"
-            className="-my-3 h-[100px] mr-2"
-          />
+          <Link
+          to="/"
+          >
+            <img
+              src="/src/assets/logo.svg"
+              alt="Logo"
+              className="-my-3 h-[100px] mr-2"
+            />
+          </Link>
         </div>
         <div className="flex flex-row gap-3">
           <div className="hidden md:flex space-x-4 border-r border-black px-2">
@@ -41,14 +45,10 @@ const Navbar = () => {
               Home
             </Link>
             <li onClick={scrollToSteps} className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]">How it work</li>
-            <li className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]" onClick={scrollTorent}>Rental Deals</li>
             <li onClick={scrollToDetails} className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]">why choose us</li>
             <li className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]" onClick={scrollToTest}>Testimonials</li>
           </div>
-          <div className="flex space-x-4">
-            <Link to="/signup" className=" text-black px-4  rounded ">
-              Register
-            </Link>
+          <div className="flex space-x-4 justify-center items-center">
             <Link
               to="/login"
               className="bg-[#C17D3C] py-1 text-white px-5  rounded "
