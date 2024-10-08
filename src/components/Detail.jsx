@@ -31,10 +31,10 @@ function Detail() {
 
   return (
     <>
-      <div className="flex flex-row">
-        <div className="w-[40%] bg ">
+      <div className="flex flex-row h-screen justify-center items-center" id="requirements">
+        <div className="w-[40%] bg h-screen flex flex-col justify-center items-center">
           <h1 className="text-3xl font-bold w-[80%] mx-auto py-6 pl-24">
-            - Necessary Documents for Renting
+            Necessary Documents for Renting
           </h1>
           <img
             src="/src/assets/aboutcar.png"

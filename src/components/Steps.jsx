@@ -3,8 +3,8 @@ import React from "react";
 function Steps() {
   return (
     <>
-      <div className="bg-[#0B132A] py-5 text-white" id="steps">
-        <h1 className="text-center text-3xl font-bold">How it work</h1>
+      <div className="bg-[#0B132A] py-5 text-white h-screen flex flex-col justify-center items-center" id="steps" >
+        <h1 className="text-center text-3xl font-bold">How it Works</h1>
         <p className="text-sm text-center w-1/3 mx-auto py-4">
           A high-performing web-based car rental system for any rent-a-car
           company and website

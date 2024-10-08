@@ -66,16 +66,12 @@ function TestContainer() {
             </div>
           ))}
       </div>
-      <div className="w-full flex  flex-row justify-between px-5 bg-white items-center">
+      <div className="w-full flex  flex-row justify-between px-5 bg-[#2C2C2C] items-center">
         <div className="flex flex-row gap-3">
-            <img src="/src/assets/group.png" className="" alt="" />
-            <img src="/src/assets/dot.png" alt="" />
-            <img src="/src/assets/dot.png" alt="" />
-            <img src="/src/assets/dot.png" alt="" />
+          <img src="/src/assets/next.png" onClick={handlePrevious} alt="next" className="cursor-pointer" style={{ filter: "invert(100%)" }} />
         </div>
         <div className="flex flex-row gap-4">
-          <img src="/src/assets/next.png" onClick={handlePrevious} alt="next" className="cursor-pointer" />
-          <img src="/src/assets/previous.png" alt="previous" onClick={handleNext} className="cursor-pointer" />
+          <img src="/src/assets/previous.png" alt="previous" onClick={handleNext} className="cursor-pointer" style={{ filter: "invert(100%)" }} />
         </div>
       </div>
     </div>
