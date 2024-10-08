@@ -31,7 +31,7 @@ function HomePage() {
             </div>
           </div>
         </div>
-        <div className="flex flow-row justify-evenly py-3">
+        <div className="hidden md:flex flow-row justify-evenly py-3">
           {Array.from({ length: 7 }).map((_, index) => (
             <div key={index}>
               <img
