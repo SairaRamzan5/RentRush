@@ -12,7 +12,7 @@ function Testominial({name,city,desc}) {
           />
           <div className="flex flex-col">
             <span className="font-bold">{name}</span>
-            <span className="text-gray-600">{city}</span>
+            <span className="text-[#2C2C2C]">{city}</span>
           </div>
         </div>
         <p>4.5</p>
