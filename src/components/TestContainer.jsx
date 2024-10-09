@@ -38,8 +38,8 @@ function TestContainer() {
   // State to track the starting index of testimonials being displayed
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Maximum number of testimonials to display at once
-  const testimonialsPerPage = 3;
+  // Maximum number of testimonials to display at once based on screen size
+  const testimonialsPerPage = window.innerWidth <= 640 ? 1 : 3; // 1 for small screens (sm), 3 for medium and above screens
 
   // Function to handle the Next button click
   const handleNext = () => {
@@ -57,21 +57,36 @@ function TestContainer() {
 
   return (
     <div>
-      <div className="flex flex-row justify-evenly" id="Test">
+      <div className="flex flex-row justify-evenly flex-wrap" id="Test">
         {reviews
           .slice(currentIndex, currentIndex + testimonialsPerPage)
           .map((card, index) => (
-            <div key={index} className="w-full sm:w-1/2 md:w-1/3 p-2">
+            <div
+              key={index}
+              className="w-full sm:w-full md:w-1/3 p-2"
+            >
               <Testimonial name={card.name} city={card.city} desc={card.desc} />
             </div>
           ))}
       </div>
-      <div className="w-full flex  flex-row justify-between px-5 bg-[#2C2C2C] items-center">
+      <div className="w-full flex flex-row justify-between px-5 bg-[#2C2C2C] items-center mt-4">
         <div className="flex flex-row gap-3">
-          <img src="/src/assets/next.png" onClick={handlePrevious} alt="next" className="cursor-pointer" style={{ filter: "invert(100%)" }} />
+          <img
+            src="/src/assets/next.png"
+            onClick={handlePrevious}
+            alt="previous"
+            className={`cursor-pointer ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
+            style={{ filter: "invert(100%)" }}
+          />
         </div>
         <div className="flex flex-row gap-4">
-          <img src="/src/assets/previous.png" alt="previous" onClick={handleNext} className="cursor-pointer" style={{ filter: "invert(100%)" }} />
+          <img
+            src="/src/assets/previous.png"
+            alt="next"
+            onClick={handleNext}
+            className={`cursor-pointer ${currentIndex + testimonialsPerPage >= reviews.length ? "opacity-50 cursor-not-allowed" : ""}`}
+            style={{ filter: "invert(100%)" }}
+          />
         </div>
       </div>
     </div>

@@ -29,10 +29,11 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="mt-8 border-t pt-4 text-sm text-gray-500 flex justify-between">
-        <p>&copy;2024 RentRush. All rights reserved</p>
-        <div className="space-x-4">
+      <div className="border-t pt-4 text-xs lg:text-sm md:text-sm text-gray-500 text-center">
+        <p>&copy; 2024 RentRush. All rights reserved</p>
+        <div className="mt-2 space-x-4">
           <a href="#" className="hover:underline">Privacy & Policy</a>
+          <span>|</span>
           <a href="#" className="hover:underline">Terms & Condition</a>
         </div>
       </div>
