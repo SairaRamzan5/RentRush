@@ -3,7 +3,7 @@ import React from "react";
 function DetailCard({ img, title, requirement }) {
   return (
     <>
-      <div className="shadow-md shadow-gray-300 mx-auto flex flex-row items-center justify-start gap-8 w-[70%]  rounded-3xl relative">
+      <div className="shadow-md shadow-gray-300 mx-auto flex flex-row items-center justify-start gap-8 w-[100%] lg:w-[70%] md:w-[70%] rounded-3xl relative">
         <div
           className="w-[40px] h-[100px] bg-[#C17D3C] rounded-l-3xl  "
         ></div>{" "}
