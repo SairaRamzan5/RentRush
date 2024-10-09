@@ -21,19 +21,17 @@ function Reason() {
   ];
 
   return (
-    <div className="bg-[#0B132A] text-white h-screen flex flex-col justify-center items-center relative" id="detail">
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+    <div
+      className="bg-[#0B132A] text-white grid grid-cols-1 justify-center items-center relative"
+      id="detail"
+    >
       <h1 className="text-3xl text-center py-2 font-bold">Why Choose us</h1>
-      <p className="text-sm w-[40%] mx-auto text-center">
-        "Choose RentRush for our unbeatable prices, extensive location options,
-        and a commitment to exceptional customer service"
+      <p className="text-sm mx-10 text-center">
+        Choose RentRush for our unbeatable prices, extensive location options,
+        and a commitment to exceptional customer service
       </p>
       <div className="flex flow-row justify-between">
-        <div>
+        <div className="hidden md:block lg:block">
           <img
             src="/src/assets/choose/bg.png"
             className="w-[350px] rotate-[60] relative -left-[60px]"
@@ -45,9 +43,17 @@ function Reason() {
             alt=""
           />
         </div>
-        <div className="w-[50%] relative pt-[90px] ">
-          {arr.map((item,index)=>{
-            return <Card key={index} title={item.title} desc={item.desc} img={item.img}/>
+
+        <div className="w-[50%] relative pt-[90px]">
+          {arr.map((item, index) => {
+            return (
+              <Card
+                key={index}
+                title={item.title}
+                desc={item.desc}
+                img={item.img}
+              />
+            );
           })}
         </div>
       </div>

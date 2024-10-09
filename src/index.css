@@ -19,6 +19,13 @@
 }
 .bgred{
     background-image: url(/src/assets/choose/bg.png);
+
+/* @media screen and (max-width: 640px) {
+      .main {
+        padding: 0;
+      }
+    } */
+     
 }/* Container for testimonials */
 
 .transition-container {
@@ -33,4 +40,5 @@
   .transition-container.prev {
     transform: translateX(100%);
   }
+  
   
