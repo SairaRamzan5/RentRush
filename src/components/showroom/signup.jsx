@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SignUp() {
+function ShowroomSignUp() {
   return (
     <div className="flex items-center justify-center background min-w-max min-h-screen py-16">
       <div className="w-screen h-fit max-w-md py-5 px-7 bg-gray-300 backdrop-blur-lg bg-white/30 border border-white/10 rounded-3xl  p-5 shadow-lg">
@@ -16,13 +16,30 @@ function SignUp() {
           <div className="mb-4">
             <label
               className=" text-sm block text-[#02073F] font-bold mb-2"
-              htmlFor="name"
+              htmlFor="Sname"
             >
-              Name
+              Showroom Name
             </label>
             <input
               type="text"
-              id="name"
+              id="Sname"
+              placeholder="Cars Club"
+              className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
+              required
+            />
+          </div>
+
+           {/*Owner Name */}
+           <div className="mb-4">
+            <label
+              className=" text-sm block text-[#02073F] font-bold mb-2"
+              htmlFor="Oname"
+            >
+              Owner Name
+            </label>
+            <input
+              type="text"
+              id="Oname"
               placeholder="John Doe"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
               required
@@ -35,7 +52,7 @@ function SignUp() {
               className=" text-sm block text-[#02073F] font-bold mb-2"
               htmlFor="cnic"
             >
-              CNIC
+              Owner's CNIC
             </label>
             <input
               type="text"
@@ -54,7 +71,7 @@ function SignUp() {
               className=" text-sm block text-[#02073F] font-bold mb-2"
               htmlFor="contact"
             >
-              Contact Number
+              Owner's Contact Number
             </label>
             <input
               type="tel"
@@ -73,7 +90,7 @@ function SignUp() {
               className=" text-sm block text-[#02073F] font-bold mb-2"
               htmlFor="address"
             >
-              Address
+              Showroom Address
             </label>
             <input
               type="text"
@@ -90,12 +107,12 @@ function SignUp() {
               className=" text-sm block text-[#02073F] font-bold mb-2"
               htmlFor="email"
             >
-              Email
+              Company/Owner Email
             </label>
             <input
               type="email"
               id="email"
-              placeholder="you@example.com"
+              placeholder="name@example.com"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
               required
             />
@@ -146,7 +163,7 @@ function SignUp() {
           </div>
         </form>
         <div>
-          <p className="text-xs text-center font-bold text-[#02073F] my-1">or continue with</p>
+          <p className="text-xs text-[#02073F] font-bold text-center my-1">or continue with</p>
           <div className=" flex flex-row justify-center">
             <div className="px-10 rounded-full hover:cursor-pointer bg-white w-fit py-2">
               <img src="/src/assets/google.svg" alt="" className="w-5" />
@@ -156,8 +173,8 @@ function SignUp() {
           <p className="mt-4 text-center text-[#02073F] text-xs">
             Already have an account?{" "}
             <Link
-              to="/login"
-              className="text-[#02073F] hover:cursor-pointer hover:text-[#ffffff] font-bold"
+              to="/showroom/login"
+              className="text-[#02073F] font-bold hover:text-[#ffffff]"
             >
               Log In
             </Link>
@@ -167,4 +184,4 @@ function SignUp() {
     </div>
   );
 }
-export default SignUp;
+export default ShowroomSignUp;
