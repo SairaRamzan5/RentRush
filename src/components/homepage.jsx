@@ -10,15 +10,15 @@ function HomePage() {
   return (
     <>
       <Navbar />
-      <div id="Home" className="">
-        <div className="flex flex-col background bg-center w-full">
-          <div className="info px-16 py-20 w-[60%]">
-            <h1 className=" py-4 font-bold text-5xl text-white">
+      <div id="Home">
+        <div className="flex flex-col background bg-center w-auto sm:w-auto md:w-full lg:w-auto h-96 sm:h-96 md:h-screen lg:h-screen">
+          <div className="info px-16 py-20 lg:w-[60%] sm:w-auto">
+            <h1 className=" py-4 font-bold text-2xl sm:text-2xl md:text-3xl lg:text-5xl text-white ">
               FAST AND EASY WAY TO <span className="text-primary"> RENT</span>{" "}A CAR
             </h1>
-            <p className="text-md font-poppins py-9 text-white pr-40">
+            <p className="text-sm sm:text-sm md:text-md lg:text-xl font-poppins py-9 text-white lg:pr-40">
               Our RentRush online booking system is designed to meet the
-              specific needs of car rental business owners. This easy-to-use car
+              specific needs of car rental business owners. This easy to use car
               rental software will let you manage.
             </p>
             <div className="buttons flex justify-start">

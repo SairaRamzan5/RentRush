@@ -7,8 +7,8 @@ const Card = ({ title, desc, img }) => {
         <img src={`/src/assets/choose/${img}.png`} className="w-8" alt="" />
       </div>
       <div>
-        <h2 className="text-white font-bold text-lg">{title}</h2>
-        <p className="text-white text-sm">{desc}</p>
+        <h2 className="text-white font-bold text-sm sm:text-sm md:text-lg lg:text-lg">{title}</h2>
+        <p className="text-white text-sm font-poppins">{desc}</p>
       </div>
     </div>
   );
