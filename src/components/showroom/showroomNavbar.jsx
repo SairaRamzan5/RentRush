@@ -17,7 +17,7 @@ function ShowroomNavbar({ onMenuClick }) {
         </div>
         <div className="flex flex-row gap-3">
           <div className="flex space-x-4 justify-center items-center">
-            {/* Button to open the drawer, calls the function passed via props */}
+            
             <button onClick={onMenuClick}>
               <AlignJustify />
             </button>
