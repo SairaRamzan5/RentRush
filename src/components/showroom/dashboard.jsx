@@ -1,24 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import ShowroomNavbar from "./showroomNavbar"; // Import ShowroomNavbar component
+import Drawer from "./drawer"; // Import Drawer component
 
 function ShowroomDashboard() {
+  // State to control drawer visibility
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  // Function to toggle the drawer
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  // Function to close the drawer
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Top Navigation Bar */}
-      <header className="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
-        {/* Menu Button */}
-        <button className="lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-300">
-          <img src="../../assets/menu.svg" alt="Menu" className="w-6 h-6" />
-        </button>
-        {/* Title */}
-        <h1 className="text-xl font-bold text-gray-800 mx-auto">Dashboard</h1>
-        {/* Placeholder for alignment */}
-        <div className="w-6 h-6 lg:hidden"></div>
-      </header>
+    <div className="bg-[#2C2C2C] min-h-screen">
+      {/* Use the ShowroomNavbar component */}
+      <ShowroomNavbar onMenuClick={toggleDrawer} />
 
       {/* Main Content */}
-      <div className="p-6">
-        
+      <div className="container mx-auto p-6">
+        <div className="text-white">
+          <p className="text-lg mb-6">
+            This is the main content area of the dashboard. You can place your items or features here.
+          </p>
+        </div>
       </div>
+
+      {/* Use the Drawer component */}
+      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer} />
     </div>
   );
 }
