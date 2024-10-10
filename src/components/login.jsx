@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Login() {
+function Login() 
+{
   return (
-    <div className="flex items-center justify-center background min-h-screen min-w-max  ">
-      <div className=" sm:w-[38%] w-full ml-10 px-8 py-9 bg-gray-300 backdrop-blur-lg bg-white/30 border border-white/10 rounded-3xl  shadow-lg">
+    <div className="flex items-center justify-center background min-h-screen min-w-max">
+      <div className="w-screen h-fit max-w-md py-5 px-7 bg-gray-300 backdrop-blur-lg bg-white/30 border border-white/10 rounded-3xl  p-5 shadow-lg">
         <img
           src="/src/assets/logo.svg"
           className="w-[80px] -my-5 -mx-5 -mt-4"

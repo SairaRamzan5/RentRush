@@ -14,6 +14,8 @@ module.exports = {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
+        playfair: ['"Playfair Display"', 'serif'],
+        lobster: ['Lobster', 'cursive'],
 
       },
     },
