@@ -9,20 +9,20 @@ function Reason() {
       img: "icon1",
     },
     {
-      title: "Best Price Guaranteed",
-      desc: "At RentRush, we offer the Best Price Guarantee. If you find a lower price elsewhere for your car rental, ensuring you receive the most competitive rates for your reservations.",
+      title: "Many Locations",
+      desc: "Accessible rentals across various locations. Flexible Book and Return Locations.",
       img: "icon2",
     },
     {
-      title: "Many Locations",
-      desc: "Accessible rentals across various locations. Flexible Book and Return Locations.",
+      title: "Best Price Guaranteed",
+      desc: "At RentRush, we offer the Best Price Guarantee. If you find a lower price elsewhere for your car rental, ensuring you receive the most competitive rates for your reservations.",
       img: "icon3",
     },
   ];
 
   return (
     <div
-      className="bg-[#0B132A] text-white grid grid-cols-1 justify-center items-center relative"
+      className="bg-[#0B132A] h-auto pt-20 pb-20 lg:pb-0 text-white grid grid-cols-1 justify-center items-center relative"
       id="detail"
     >
       <h1 className="text-3xl text-center py-2 font-bold">Why Choose us</h1>
@@ -44,7 +44,7 @@ function Reason() {
           />
         </div>
 
-        <div className="w-[50%] relative pt-[90px]">
+        <div className="w-[100%] lg:w-[50%] pl-8 lg:pl-0 relative pt-[90px]">
           {arr.map((item, index) => {
             return (
               <Card
