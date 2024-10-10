@@ -9,9 +9,8 @@ function Steps() {
           A high-performing web-based car rental system for any rent-a-car company and website
         </p>
 
-        {/* Container for the Steps */}
-        <div className="flex flex-col sm:flex-row justify-center sm:justify-evenly items-center pt-10 space-y-10 sm:space-y-0 sm:space-x-10">
-          {/* Step 1 */}
+        <div className="flex flex-col items-center py-10 space-y-10 px-10 sm:flex-row sm:justify-evenly sm:space-y-0 sm:space-x-10">
+         
           <div className="flex flex-col justify-center items-center">
             <div className="bg-[#C17D3C] w-fit p-6 rounded-2xl mx-auto">
               <img src="/src/assets/work/gps.png" alt="Choose Location" />
@@ -22,10 +21,7 @@ function Steps() {
             </p>
           </div>
 
-          {/* Connector Line */}
-          <img src="/src/assets/work/line2.png" className="hidden sm:block sm:mx-10 my-5" alt="" />
-
-          {/* Step 2 */}
+          
           <div className="flex flex-col justify-center items-center">
             <div className="bg-[#C17D3C] mx-auto w-fit p-6 rounded-2xl">
               <img src="/src/assets/work/celender.png" alt="Pick-up Date" />
@@ -35,11 +31,7 @@ function Steps() {
               Anytime, Anywhere, Pick your Date and Enjoy your Trip. Select your pick-up date for your rental car.
             </p>
           </div>
-
-          {/* Connector Line */}
-          <img src="/src/assets/work/line2.png" className="hidden sm:block sm:mx-10 my-5" alt="" />
-
-          {/* Step 3 */}
+   
           <div className="flex flex-col justify-center items-center">
             <div className="bg-[#C17D3C] mx-auto w-fit p-6 rounded-2xl">
               <img src="/src/assets/work/caricon.png" alt="Book your car" />

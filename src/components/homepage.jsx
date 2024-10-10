@@ -11,9 +11,9 @@ function HomePage() {
     <>
       <Navbar />
       <div id="Home">
-        <div className="flex flex-col background bg-center w-auto sm:w-auto md:w-full lg:w-auto h-96 sm:h-96 md:h-screen lg:h-screen">
+        <div className="flex flex-col background bg-center w-auto sm:w-auto md:w-full lg:w-auto h-1/2 sm:h-1/2 md:h-screen lg:h-screen">
           <div className="info px-16 py-20 lg:w-[60%] sm:w-auto">
-            <h1 className=" py-4 font-bold text-2xl sm:text-2xl md:text-3xl lg:text-5xl text-white ">
+            <h1 className="py-4 font-bold text-4xl sm:text-4xl md:text-4xl lg:text-5xl text-white font-poppins">
               FAST AND EASY WAY TO <span className="text-primary"> RENT</span>{" "}A CAR
             </h1>
             <p className="text-sm sm:text-sm md:text-md lg:text-xl font-poppins py-9 text-white lg:pr-40">
