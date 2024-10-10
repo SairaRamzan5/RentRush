@@ -1,39 +1,165 @@
 import React, { useState } from "react";
-import ShowroomNavbar from "./showroomNavbar"; // Import ShowroomNavbar component
-import Drawer from "./drawer"; // Import Drawer component
+import ShowroomNavbar from "./showroomNavbar";
+import Drawer from "./drawer";
+import CarCard from './carCard';
 
-function ShowroomDashboard() {
-  // State to control drawer visibility
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+const cars = [
+  {
+    name: "Toyota Camry New",
+    description: "3.5 D5 PowerPulse Momentum 5dr AWD",
+    image: "/src/assets/aboutcar.png",
+    miles: "20",
+    fuel: "Petrol",
+    transmission: "Automatic",
+    price: "40,000",
+    link: "/car/toyota-camry",
+    label: "Great Price",
+  },
+  {
+    name: "Toyota Camry New",
+    description: "3.5 D5 PowerPulse Momentum 5dr AWD",
+    image: "/src/assets/aboutcar.png",
+    miles: "20",
+    fuel: "Petrol",
+    transmission: "Automatic",
+    price: "40,000",
+    link: "/car/toyota-camry",
+    label: "Great Price",
+  },
+  {
+    name: "Toyota Camry New",
+    description: "3.5 D5 PowerPulse Momentum 5dr AWD",
+    image: "/src/assets/cars/toyota-camry.jpg",
+    miles: "20",
+    fuel: "Petrol",
+    transmission: "Automatic",
+    price: "40,000",
+    link: "/car/toyota-camry",
+    label: "Great Price",
+  },
+  {
+    name: "Toyota Camry New",
+    description: "3.5 D5 PowerPulse Momentum 5dr AWD",
+    image: "/src/assets/cars/toyota-camry.jpg",
+    miles: "20",
+    fuel: "Petrol",
+    transmission: "Automatic",
+    price: "40,000",
+    link: "/car/toyota-camry",
+    label: "Great Price",
+  },
+  {
+    name: "Toyota Camry New",
+    description: "3.5 D5 PowerPulse Momentum 5dr AWD",
+    image: "/src/assets/cars/toyota-camry.jpg",
+    miles: "20",
+    fuel: "Petrol",
+    transmission: "Automatic",
+    price: "40,000",
+    link: "/car/toyota-camry",
+    label: "Great Price",
+  },
+  {
+    name: "Toyota Camry New",
+    description: "3.5 D5 PowerPulse Momentum 5dr AWD",
+    image: "/src/assets/cars/toyota-camry.jpg",
+    miles: "20",
+    fuel: "Petrol",
+    transmission: "Automatic",
+    price: "40,000",
+    link: "/car/toyota-camry",
+    label: "Great Price",
+  }, 
+  {
+    name: "Toyota Camry New",
+    description: "3.5 D5 PowerPulse Momentum 5dr AWD",
+    image: "/src/assets/cars/toyota-camry.jpg",
+    miles: "20",
+    fuel: "Petrol",
+    transmission: "Automatic",
+    price: "40,000",
+    link: "/car/toyota-camry",
+    label: "Great Price",
+  }, 
+  {
+    name: "Toyota Camry New",
+    description: "3.5 D5 PowerPulse Momentum 5dr AWD",
+    image: "/src/assets/cars/toyota-camry.jpg",
+    miles: "20",
+    fuel: "Petrol",
+    transmission: "Automatic",
+    price: "40,000",
+    link: "/car/toyota-camry",
+    label: "Great Price",
+  }, 
+  {
+    name: "Toyota Camry New",
+    description: "3.5 D5 PowerPulse Momentum 5dr AWD",
+    image: "/src/assets/cars/toyota-camry.jpg",
+    miles: "20",
+    fuel: "Petrol",
+    transmission: "Automatic",
+    price: "40,000",
+    link: "/car/toyota-camry",
+    label: "Great Price",
+  }, 
+  {
+    name: "Toyota Camry New",
+    description: "3.5 D5 PowerPulse Momentum 5dr AWD",
+    image: "/src/assets/cars/toyota-camry.jpg",
+    miles: "20",
+    fuel: "Petrol",
+    transmission: "Automatic",
+    price: "40,000",
+    link: "/car/toyota-camry",
+    label: "Great Price",
+  }, 
+  {
+    name: "Toyota Camry New",
+    description: "3.5 D5 PowerPulse Momentum 5dr AWD",
+    image: "/src/assets/cars/toyota-camry.jpg",
+    miles: "20",
+    fuel: "Petrol",
+    transmission: "Automatic",
+    price: "40,000",
+    link: "/car/toyota-camry",
+    label: "Great Price",
+  }, 
+  {
+    name: "Toyota Camry New",
+    description: "3.5 D5 PowerPulse Momentum 5dr AWD",
+    image: "/src/assets/cars/toyota-camry.jpg",
+    miles: "20",
+    fuel: "Petrol",
+    transmission: "Automatic",
+    price: "40,000",
+    link: "/car/toyota-camry",
+    label: "Great Price",
+  },
+  
+];
 
-  // Function to toggle the drawer
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
+const ShowroomDashboard = () => {
 
-  // Function to close the drawer
-  const closeDrawer = () => {
-    setIsDrawerOpen(false);
-  };
+  // const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  // const toggleDrawer = () => {
+  //   setIsDrawerOpen(!isDrawerOpen);
+  // };
+
+  // const closeDrawer = () => {
+  //   setIsDrawerOpen(false);
+  // };
 
   return (
-    <div className="bg-[#2C2C2C] min-h-screen">
-      {/* Use the ShowroomNavbar component */}
-      <ShowroomNavbar onMenuClick={toggleDrawer} />
+    <div className="bg-[#2C2C2C] min-h-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-6">
+  {cars.map((car, index) => (
+    <CarCard key={index} car={car} />
+  ))}
+</div>
 
-      {/* Main Content */}
-      <div className="container mx-auto p-6">
-        <div className="text-white">
-          <p className="text-lg mb-6">
-            This is the main content area of the dashboard. You can place your items or features here.
-          </p>
-        </div>
-      </div>
-
-      {/* Use the Drawer component */}
-      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer} />
-    </div>
+     
   );
-}
+};
 
 export default ShowroomDashboard;
