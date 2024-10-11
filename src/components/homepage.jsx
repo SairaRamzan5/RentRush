@@ -16,7 +16,7 @@ function HomePage() {
             <h1 className="py-4 font-bold text-4xl sm:text-4xl md:text-4xl lg:text-5xl text-white font-poppins">
               FAST AND EASY WAY TO <span className="text-primary"> RENT</span>{" "}A CAR
             </h1>
-            <p className="text-sm sm:text-sm md:text-md lg:text-xl font-poppins py-9 text-white lg:pr-40">
+            <p className="text-md sm:text-md md:text-md lg:text-xl font-poppins py-9 text-white lg:pr-40">
               Our RentRush online booking system is designed to meet the
               specific needs of car rental business owners. This easy to use car
               rental software will let you manage.
