@@ -7,7 +7,7 @@ function ShowroomNavbar({ onMenuClick }) {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <Link to="/">
+          <Link to="/showroom/dashboard">
             <img
               src="/src/assets/logo.svg"
               alt="Logo"

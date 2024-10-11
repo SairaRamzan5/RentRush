@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 
-function Dialog({ isOpen, onClose, onSave }) {
+function Dialog({ isOpen, onClose, onSave, isEditing, vehicle }) {
   const [formData, setFormData] = useState({
     make: "",
     model: "",
-    milage: "",
+    mileage: "",
     engineDisplacement: "",
     rentalPrice: "",
     color: "",
@@ -14,6 +14,34 @@ function Dialog({ isOpen, onClose, onSave }) {
   });
 
   const dialogRef = useRef(null);
+
+  useEffect(() => {
+    if (isEditing && vehicle) {
+      setFormData({
+        make: vehicle.make,
+        model: vehicle.model,
+        mileage: vehicle.mileage,
+        engineDisplacement: vehicle.engineDisplacement,
+        rentalPrice: vehicle.rentalPrice,
+        color: vehicle.color,
+        transmission: vehicle.transmission,
+        bodyType: vehicle.bodyType,
+        images: [],
+      });
+    } else {
+      setFormData({
+        make: "",
+        model: "",
+        mileage: "",
+        engineDisplacement: "",
+        rentalPrice: "",
+        color: "",
+        transmission: "",
+        bodyType: "",
+        images: [],
+      });
+    }
+  }, [isEditing, vehicle]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +58,7 @@ function Dialog({ isOpen, onClose, onSave }) {
     setFormData({
       make: "",
       model: "",
-      milage: "",
+      mileage: "",
       engineDisplacement: "",
       rentalPrice: "",
       color: "",
@@ -67,11 +95,13 @@ function Dialog({ isOpen, onClose, onSave }) {
             ref={dialogRef}
             className="bg-white rounded-lg p-4 w-[50%] h-auto overflow-y-auto max-h-[80vh]"
           >
-            <h2 className="text-4xl text-center font-bold mb-4">ADD A NEW VEHICLE</h2>
+            <h2 className="text-4xl text-center font-bold mb-4">
+              {isEditing ? "EDIT VEHICLE" : "ADD A NEW VEHICLE"}
+            </h2>
 
             <form className="space-y-4">
               <div>
-                <label className="block text-2xl font-bold mb-1">Make</label>
+                <label className="block text-xl font-bold mb-1">Make</label>
                 <input
                   type="text"
                   name="make"
@@ -82,7 +112,7 @@ function Dialog({ isOpen, onClose, onSave }) {
                 />
               </div>
               <div>
-                <label className="block text-2xl font-bold mb-1">Model</label>
+                <label className="block text-xl font-bold mb-1">Model</label>
                 <input
                   type="text"
                   name="model"
@@ -93,18 +123,18 @@ function Dialog({ isOpen, onClose, onSave }) {
                 />
               </div>
               <div>
-                <label className="block text-2xl font-bold mb-1">Milage</label>
+                <label className="block text-xl font-bold mb-1">Mileage</label>
                 <input
                   type="number"
-                  name="milage"
-                  value={formData.milage}
+                  name="mileage"
+                  value={formData.mileage}
                   onChange={handleInputChange}
                   className="w-full p-2 border rounded whitespace-nowrap overflow-hidden text-ellipsis"
                   placeholder="200km"
                 />
               </div>
               <div>
-                <label className="block text-2xl font-bold mb-1">Engine Displacement</label>
+                <label className="block text-xl font-bold mb-1">Engine Displacement</label>
                 <input
                   type="text"
                   name="engineDisplacement"
@@ -115,7 +145,7 @@ function Dialog({ isOpen, onClose, onSave }) {
                 />
               </div>
               <div>
-                <label className="block text-2xl font-bold mb-1">Rental Price</label>
+                <label className="block text-xl font-bold mb-1">Rental Price</label>
                 <input
                   type="number"
                   name="rentalPrice"
@@ -126,7 +156,7 @@ function Dialog({ isOpen, onClose, onSave }) {
                 />
               </div>
               <div>
-                <label className="block text-2xl font-bold mb-1">Color</label>
+                <label className="block text-xl font-bold mb-1">Color</label>
                 <input
                   type="text"
                   name="color"
@@ -137,7 +167,7 @@ function Dialog({ isOpen, onClose, onSave }) {
                 />
               </div>
               <div>
-                <label className="block text-2xl font-bold mb-1">Transmission</label>
+                <label className="block text-xl font-bold mb-1">Transmission</label>
                 <select
                   name="transmission"
                   value={formData.transmission}
@@ -150,20 +180,20 @@ function Dialog({ isOpen, onClose, onSave }) {
                 </select>
               </div>
               <div>
-                <label className="block text-2xl font-bold mb-1">Body Type</label>
+                <label className="block text-xl font-bold mb-1">Body Type</label>
                 <select
-                  name="transmission"
-                  value={formData.transmission}
+                  name="bodyType"
+                  value={formData.bodyType}
                   onChange={handleInputChange}
                   className="w-full p-2 border rounded"
                 >
-                  <option value="">Body Type</option>
+                  <option value="">Select Body Type</option>
                   <option value="Sedan">Sedan</option>
                   <option value="SUV">SUV</option>
                 </select>
               </div>
               <div>
-                <label className="block text-2xl font-bold mb-1">Images</label>
+                <label className="block text-xl font-bold mb-1">Images</label>
                 <input
                   type="file"
                   multiple
@@ -194,7 +224,7 @@ function Dialog({ isOpen, onClose, onSave }) {
                 onClick={handleSubmit}
                 className="px-4 py-2 bg-[#C17D3C] text-white rounded hover:bg-[#A86428]"
               >
-                Save
+                {isEditing ? "Update" : "Save"}
               </button>
             </div>
           </div>
