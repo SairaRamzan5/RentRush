@@ -21,7 +21,7 @@ function Drawer({ isOpen, onClose }) {
 
         <div className="p-6 space-y-4">
           <Link
-            to="/showroom/dashboard"
+            to="/"
             className="block text-lg font-semibold text-gray-800 hover:bg-gray-100 p-2 rounded"
             onClick={onClose}
           >
