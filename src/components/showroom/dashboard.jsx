@@ -3,7 +3,7 @@ import ShowroomNavbar from "./showroomNavbar";
 import Drawer from "./drawer";
 import CarCard from "./carCard";
 
-const ca = [
+const cars = [
   {
     name: "Toyota Camry New",
     image: "/src/assets/aboutcar.png",
@@ -114,7 +114,6 @@ const ca = [
   },
 ];
 
-
 const ShowroomDashboard = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -131,7 +130,7 @@ const ShowroomDashboard = () => {
     <ShowroomNavbar onMenuClick={toggleDrawer} />
 
       <div className="bg-[#2C2C2C] min-h-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-6 py-10">
-        {ca.map((car, index) => (
+        {cars.map((car, index) => (
           <CarCard key={index} car={car} />
         ))}
       </div>
