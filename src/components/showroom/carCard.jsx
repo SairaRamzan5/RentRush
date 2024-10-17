@@ -51,7 +51,6 @@ const CarCard = ({ car }) => {
         </span>
       </div>
 
-      {/* Modal for Rental Information */}
       {showModal && car.availability === "Rented Out" && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg relative w-96">
@@ -83,9 +82,6 @@ const CarCard = ({ car }) => {
 };
 
 export default CarCard;
-
-
-// import React, { useState } from "react";
 
 // const rentalInfo = {
 //   rentername: "John Doe",
