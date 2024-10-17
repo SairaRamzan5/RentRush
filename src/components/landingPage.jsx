@@ -6,7 +6,7 @@ import Reason from "./Reason";
 import Variety from "./Variety";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
-function HomePage() {
+function LandingPage() {
   return (
     <>
       <Navbar />
@@ -51,4 +51,4 @@ function HomePage() {
     </>
   );
 }
-export default HomePage;
+export default LandingPage;

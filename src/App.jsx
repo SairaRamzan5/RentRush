@@ -5,8 +5,7 @@ import ShowroomLogin from "./components/showroom/login.jsx"
 import ShowroomSignUp from "./components/showroom/signup.jsx"
 import ShowroomDashboard from "./components/showroom/dashboard.jsx";
 import ShowroomInventory from "./components/showroom/inventory.jsx"
-
-import HomePage from "./components/homepage.jsx";
+import LandingPage from "./components/landingPage.jsx";
 
 function App() {
   return (
@@ -19,7 +18,7 @@ function App() {
           <Route path="/showroom/login" element={<ShowroomLogin />}></Route>
           <Route path="/showroom/Dashboard" element={<ShowroomDashboard />}></Route>
           <Route path="/showroom/inventory" element={<ShowroomInventory />}></Route>
-          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/" element={<LandingPage />}></Route>
         </Routes>
       </BrowserRouter>
     </>
