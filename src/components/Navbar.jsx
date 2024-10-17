@@ -46,13 +46,15 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex flex-row gap-3">
-          <div className="hidden md:flex space-x-4 border-r border-black px-2">
+          <div className="hidden md:flex space-x-4 px-2">
             <li onClick={scrollToHome} className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]">Home</li>
             <li onClick={scrollToSteps} className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]">How it Works</li>
             <li onClick={scrollToRequirements} className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]">Requirements</li>
             <li onClick={scrollToDetails} className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]">Why Choose Us</li>
             <li className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]" onClick={scrollToTest}>Testimonials</li>
           </div>
+        </div>
+        <div>
           <div className="flex space-x-4 justify-center items-center">
             <Link
               to="/login"
