@@ -13,7 +13,6 @@ const UserCard = ({ car }) => {
 
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden w-64 relative">
-      {/* Main Card */}
       <div className="relative">
         <img
           src={car.image}
@@ -32,7 +31,6 @@ const UserCard = ({ car }) => {
         <div className="flex justify-between items-center pb-4">
           <span className="text-xl font-bold">{car.price}rs</span>
 
-          {/* View Details Button (Visible for all cars now) */}
           <button onClick={openModal} className="text-blue-600 hover:underline">
             View Details
           </button>
@@ -42,9 +40,7 @@ const UserCard = ({ car }) => {
       
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          {/* Modal covering 80% of the screen with scrolling */}
           <div className="bg-white p-6 rounded-lg relative w-4/5 h-4/5 overflow-y-auto">
-            {/* Close button */}
             <button
               onClick={closeModal}
               className="absolute top-2 right-2 text-gray-500 hover:text-black"
@@ -76,22 +72,22 @@ const UserCard = ({ car }) => {
                 )) || (
                   <>
                     <img
-                      src={car.image} // Example image 1
+                      src={car.image}
                       alt="Car Image 1"
                       className="w-1/5 h-20 object-contain rounded mb-4 border shadow-lg bg-gray-100"
                     />
                     <img
-                      src={car.image} // Example image 2
+                      src={car.image}
                       alt="Car Image 2"
                       className="w-1/5 h-20 object-contain rounded mb-4 border shadow-lg bg-gray-100"
                     />
                     <img
-                      src={car.image} // Example image 3
+                      src={car.image}
                       alt="Car Image 3"
                       className="w-1/5 h-20 object-contain rounded mb-4 border shadow-lg bg-gray-100"
                     />
                     <img
-                      src={car.image} // Example image 4
+                      src={car.image}
                       alt="Car Image 4"
                       className="w-1/5 h-20 object-contain rounded mb-4 border shadow-lg bg-gray-100"
                     />
@@ -99,7 +95,6 @@ const UserCard = ({ car }) => {
                 )}
               </div>
 
-              {/* Car Details */}
               <h2 className="text-2xl font-bold">Car Details</h2>
               <p className="text-gray-700">
                 <strong>Model:</strong> {car.name}
