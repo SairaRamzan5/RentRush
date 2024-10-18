@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import UserCard from "../customer/userCard";
+import Navbar from "../customer/Navbar";
 
 const cars = [
   {
@@ -116,6 +117,7 @@ const UserDashboard = () => {
 
   return (
     <>
+      <Navbar />
       <div className="bg-[#2C2C2C] min-h-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-6 py-10">
         {cars.map((car, index) => (
           <UserCard key={index} car={car} />
