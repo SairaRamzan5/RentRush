@@ -28,15 +28,15 @@ const UserProfile = () => {
     const handleCancel = () => setIsEditing(false);
 
     return (
-        <div>
+        <div className="bg-[#2C2C2C] h-screen"> 
             <Navbar />
 
-            <div className="container mx-auto mt-10 p-4">
+            <div className="w-96 justify-center text-center mt-10 m-auto p-4 border bg-white rounded-xl">
                 <h2 className="text-2xl font-bold mb-4">User Profile</h2>
 
                 <div className="profile-fields">
                     <div className="mb-4">
-                        <label className="block font-semibold">Name:</label>
+                        <label className="block font-semibold text-xl">Name</label>
                         {isEditing ? (
                             <input
                                 type="text"
@@ -46,12 +46,19 @@ const UserProfile = () => {
                                 className="border p-2 rounded w-full"
                             />
                         ) : (
-                            <p>{userInfo.name}</p>
+                            <input
+                                type="text"
+                                name="name"
+                                value={userInfo.name}
+                                onChange={handleInputChange}
+                                className="border p-2 rounded w-auto"
+                                readOnly
+                            />
                         )}
                     </div>
 
                     <div className="mb-4">
-                        <label className="block font-semibold">Email:</label>
+                        <label className="block font-semibold text-xl">Email</label>
                         {isEditing ? (
                             <input
                                 type="email"
@@ -61,12 +68,19 @@ const UserProfile = () => {
                                 className="border p-2 rounded w-full"
                             />
                         ) : (
-                            <p>{userInfo.email}</p>
+                            <input
+                                type="text"
+                                name="name"
+                                value={userInfo.email}
+                                onChange={handleInputChange}
+                                className="border p-2 rounded w-auto"
+                                readOnly
+                            />
                         )}
                     </div>
 
                     <div className="mb-4">
-                        <label className="block font-semibold">Phone Number:</label>
+                        <label className="block font-semibold text-xl">Phone Number</label>
                         {isEditing ? (
                             <input
                                 type="tel"
@@ -76,12 +90,19 @@ const UserProfile = () => {
                                 className="border p-2 rounded w-full"
                             />
                         ) : (
-                            <p>{userInfo.phone}</p>
+                            <input
+                                type="text"
+                                name="name"
+                                value={userInfo.phone}
+                                onChange={handleInputChange}
+                                className="border p-2 rounded w-auto"
+                                readOnly
+                            />
                         )}
                     </div>
 
                     <div className="mb-4">
-                        <label className="block font-semibold">Address:</label>
+                        <label className="block font-semibold text-xl">Address</label>
                         {isEditing ? (
                             <input
                                 type="text"
@@ -91,12 +112,19 @@ const UserProfile = () => {
                                 className="border p-2 rounded w-full"
                             />
                         ) : (
-                            <p>{userInfo.address}</p>
+                            <input
+                                type="text"
+                                name="name"
+                                value={userInfo.address}
+                                onChange={handleInputChange}
+                                className="border p-2 rounded w-auto"
+                                readOnly
+                            />
                         )}
                     </div>
 
                     <div className="mb-4">
-                        <label className="block font-semibold">CNIC:</label>
+                        <label className="block font-semibold text-xl">CNIC</label>
                         {isEditing ? (
                             <input
                                 type="text"
@@ -106,7 +134,14 @@ const UserProfile = () => {
                                 className="border p-2 rounded w-full"
                             />
                         ) : (
-                            <p>{userInfo.cnic}</p>
+                            <input
+                                type="text"
+                                name="name"
+                                value={userInfo.cnic}
+                                onChange={handleInputChange}
+                                className="border p-2 rounded w-auto"
+                                readOnly
+                            />
                         )}
                     </div>
                 </div>
@@ -114,7 +149,7 @@ const UserProfile = () => {
                 {!isEditing ? (
                     <button
                         onClick={handleEdit}
-                        className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+                        className="bg-primary text-white px-4 py-2 rounded mt-4"
                     >
                         Edit
                     </button>
