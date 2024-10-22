@@ -1,7 +1,31 @@
-import React from "react";
 import { Link } from "react-router-dom";
-
+import { useState } from "react";
+import axios from 'axios'
 function SignUp() {
+  const [name, setname] = useState('')
+  const [email, setemail] = useState('')
+  const [contact, setcontact] = useState('')
+  const [cnic, setcnic] = useState('')
+  const [address, setaddress] = useState('')
+  const [password, setpassword] = useState('')
+  // const [cpassword, setcpassword] = useState('')
+  // const [error, seterror] = useState('')
+  const handleSignup=(e)=>{
+   e.preventDefault();
+   axios.post('http://localhost:3000/api/signup',{
+    ownerName:name,
+    cnic:cnic,
+    contactNumber:contact,
+    address:address,
+    email:email,
+    password:password,
+    role:'client',
+   }).then(response=>{
+    console.log(response.data)
+   }).catch(error=>{
+    console.log(error.response.data)
+   })
+  }
   return (
     <div className="flex items-center justify-center background min-w-max min-h-screen py-16">
       <div className="w-screen h-fit max-w-md py-5 px-7 bg-gray-300 backdrop-blur-lg bg-white/30 border border-white/10 rounded-3xl  p-5 shadow-lg">
@@ -11,17 +35,17 @@ function SignUp() {
           alt=""
         />
         <h2 className="text-3xl font-bold text-[#02073F]">Create Account</h2>
-        <form className="mt-8  rounded mb-4">
+        <form onSubmit={handleSignup} className="mt-8  rounded mb-4">
           {/* Name */}
           <div className="mb-4">
             <label
-              className=" text-sm block text-[#02073F] font-bold mb-2"
+               className=" text-sm block text-[#02073F] font-bold mb-2"
               htmlFor="name"
             >
               Name
             </label>
             <input
-              type="text"
+             value={name} onChange={(e)=>setname(e.target.value)} type="text"
               id="name"
               placeholder="John Doe"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -38,7 +62,7 @@ function SignUp() {
               CNIC
             </label>
             <input
-              type="text"
+             value={cnic} onChange={(e)=>setcnic(e.target.value)}  type="text"
               id="cnic"
               placeholder="12345-6789012-3"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -57,7 +81,7 @@ function SignUp() {
               Contact Number
             </label>
             <input
-              type="tel"
+             value={contact} onChange={(e)=>setcontact(e.target.value)}  type="tel"
               id="contact"
               placeholder="0300-1234567"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -76,7 +100,7 @@ function SignUp() {
               Address
             </label>
             <input
-              type="text"
+            value={address} onChange={(e)=>setaddress(e.target.value)}   type="text"
               id="address"
               placeholder="1234 Main St, City, Country"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -93,7 +117,7 @@ function SignUp() {
               Email
             </label>
             <input
-              type="email"
+             value={email} onChange={(e)=>setemail(e.target.value)}  type="email"
               id="email"
               placeholder="you@example.com"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -110,7 +134,7 @@ function SignUp() {
               Password
             </label>
             <input
-              type="password"
+             value={password} onChange={(e)=>setpassword(e.target.value)}  type="password"
               id="password"
               placeholder="********"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
