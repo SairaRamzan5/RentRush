@@ -1,29 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios'
-
+import Toast from "./Toast";
 function Login() {
 const [email, setEmial]=useState('');
 const [password, setPassword]=useState('');
-
-  const [err, setErr]=useState('')
-  const [success, setSuccess]=useState();
   const handleSubmit=async(e)=>{
     e.preventDefault();
 
 try {
   const response =await axios.post('http://localhost:5000/api/login',{email:email, password:password},{withCredentials:true})
-  setSuccess(response.data.message)
-  setTimeout(() => {
-    setSuccess('')
-    
-  }, 3000);
+  Toast(response.data.message,'success')
   
 } catch (error) {
-setErr(error.response.data)
-setTimeout(() => {
-  setErr('')
-}, 3000);
+Toast(error.response.data || "error occured", 'error')
 }
   }
   return (
@@ -80,8 +70,6 @@ setTimeout(() => {
             </button>
           </div>
         </form>
-        <span className="text-[#FF0000]">{err&&err}</span>
-        <span className="text-[#00FF00]">{success&&success}</span>
         <div>
           <p className="text-xs text-center my-1 mb-3 font-bold text-[#02073F]">or continue with</p>
           <div className=" flex flex-row justify-center">

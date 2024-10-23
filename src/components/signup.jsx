@@ -1,18 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from 'axios'
+import Toast from "./Toast";
 function SignUp() {
+  const navigate = useNavigate();
   const [name, setname] = useState('')
   const [email, setemail] = useState('')
   const [contact, setcontact] = useState('')
   const [cnic, setcnic] = useState('')
   const [address, setaddress] = useState('')
   const [password, setpassword] = useState('')
-  // const [cpassword, setcpassword] = useState('')
-  // const [error, seterror] = useState('')
   const handleSignup=(e)=>{
    e.preventDefault();
-   axios.post('http://localhost:3000/api/signup',{
+   axios.post('http://localhost:5000/api/signup',{
     ownerName:name,
     cnic:cnic,
     contactNumber:contact,
@@ -21,8 +21,10 @@ function SignUp() {
     password:password,
     role:'client',
    }).then(response=>{
-    console.log(response.data)
-   }).catch(error=>{
+    Toast(response.data, "success", ()=>navigate('/login'))
+    console.log(response)
+  }).catch(error=>{
+    Toast(error.response.data || "error occured", "error")
     console.log(error.response.data)
    })
   }
