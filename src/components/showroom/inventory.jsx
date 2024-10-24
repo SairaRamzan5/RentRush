@@ -3,6 +3,8 @@ import ShowroomNavbar from "./showroomNavbar";
 import Drawer from "./drawer";
 import Dialog from "./dialog";
 import { Plus, Edit, Trash } from "lucide-react";
+import axios from "axios";
+import Toast from "../Toast";
 
 function ShowroomInventory() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -31,16 +33,40 @@ function ShowroomInventory() {
     setVehicleToEdit(null);
   };
 
-  const handleSave = (formData) => {
-    if (isEditing) {
-      const updatedVehicles = vehicles.map((vehicle, index) =>
-        index === vehicleToEdit ? formData : vehicle
-      );
-      setVehicles(updatedVehicles);
-    } else {
-      setVehicles((prevVehicles) => [...prevVehicles, formData]);
+  const handleSave = async (formData)=>{
+    try {
+      
+      if (isEditing) {
+        // const updatedVehicles = vehicles.map((vehicle, index) =>
+        //   index === vehicleToEdit ? formData : vehicle
+        // );
+        // setVehicles(updatedVehicles);
+        console.log(formData)
+      } else {
+        // const response=await axios.post("http://localhost:5000/api/car/add", { carBrand:formData.make, rentRate:formData.RentalPrice, carModel:formData.model, year:formData.year,make:formData.model, engineType:formData.engineDisplacement, images:formData.images },{withCredentials:true}
+        
+        // )
+        const response=await axios.post("http://localhost:5000/api/car/add", {
+          carBrand:"toyota",
+          rentRate:123,
+          carModel:"xli limited",
+          year:2014,
+          make:"Gli",
+          engineType:"1.3 Gasoline Engine "
+         },{withCredentials:true}
+        
+        )
+        Toast(response.data, "success")
+        console.log("message: "+response.message)
+        console.log("message 2: "+response.data)
+        console.log({formData})
+        // setVehicles((prevVehicles) => [...prevVehicles, formData]);
+      }
+      closeDialog();
+    } catch (error) {
+      Toast(error.response.data, "error")
+      console.log({error})
     }
-    closeDialog();
   };
 
   const handleEdit = (index) => {

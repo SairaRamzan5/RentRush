@@ -99,7 +99,7 @@ function Dialog({ isOpen, onClose, onSave, isEditing, vehicle }) {
               {isEditing ? "EDIT VEHICLE" : "ADD A NEW VEHICLE"}
             </h2>
 
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
                 <label className="block text-xl font-bold mb-1">Make</label>
                 <input
