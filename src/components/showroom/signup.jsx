@@ -1,7 +1,48 @@
-import React from "react";
 import { Link } from "react-router-dom";
-
+import { useState } from "react";
+import axios from "axios";
+import Toast from "../Toast";
+import { useNavigate } from "react-router-dom";
 function ShowroomSignUp() {
+  const navigate=useNavigate()
+  const [sname, setsname] = useState('')
+  const [owner, setowner] = useState('')
+  const [cnic, setcnic] = useState('')
+  const [contact, setcontact] = useState('')
+  const [address, setaddress] = useState('')
+  const [email, setemail] = useState('')
+  const [password, setpassword] = useState('')
+  const [cpassword, setcpassword] = useState('')
+  const Handlesubmit=(e)=>{
+   e.preventDefault();
+   if(password!==cpassword){
+    let msg='Check your confirm password'
+    console.log(msg);
+    Toast(msg,'danger')
+    }
+   axios.post("http://localhost:3000/api/signup",{
+    ownerName:owner,
+    showroomName:sname,
+    cnic:cnic,
+    contactNumber:contact,
+    address:address,
+    email:email,
+    password:password,
+    role:'showroom'
+   }).then((response)=>{
+    console.log(response);
+     console.log(response.data)
+    console.log(response.status)
+    if(response.status===201){
+      Toast(response.data,'sucess',navigate('/login'))
+    }
+   }).catch((error)=>{
+    if(error.response.status===400){
+      Toast(error.response.data,'danger')
+    }
+    Toast(error.response,'error')
+   })
+  }
   return (
     <div className="flex items-center justify-center background min-w-max min-h-screen py-16">
       <div className="w-screen h-fit max-w-md py-5 px-7 bg-gray-300 backdrop-blur-lg bg-white/30 border border-white/10 rounded-3xl  p-5 shadow-lg">
@@ -11,7 +52,7 @@ function ShowroomSignUp() {
           alt=""
         />
         <h2 className="text-3xl font-bold text-[#02073F]">Create Account</h2>
-        <form className="mt-8  rounded mb-4">
+        <form onSubmit={Handlesubmit} className="mt-8  rounded mb-4">
           {/* Name */}
           <div className="mb-4">
             <label
@@ -20,7 +61,7 @@ function ShowroomSignUp() {
             >
               Showroom Name
             </label>
-            <input
+            <input value={sname} onChange={(e)=>setsname(e.target.value)}
               type="text"
               id="Sname"
               placeholder="Cars Club"
@@ -38,7 +79,7 @@ function ShowroomSignUp() {
               Owner Name
             </label>
             <input
-              type="text"
+              type="text" value={owner} onChange={(e)=>setowner(e.target.value)}
               id="Oname"
               placeholder="John Doe"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -52,10 +93,10 @@ function ShowroomSignUp() {
               className=" text-sm block text-[#02073F] font-bold mb-2"
               htmlFor="cnic"
             >
-              Owner's CNIC
+              Owner&#39;s cnic
             </label>
             <input
-              type="text"
+              type="text" value={cnic} onChange={(e)=>setcnic(e.target.value)}
               id="cnic"
               placeholder="12345-6789012-3"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -71,10 +112,10 @@ function ShowroomSignUp() {
               className=" text-sm block text-[#02073F] font-bold mb-2"
               htmlFor="contact"
             >
-              Owner's Contact Number
+              Owner&#39;s Contact Number
             </label>
             <input
-              type="tel"
+              type="tel"  value={contact} onChange={(e)=>setcontact(e.target.value)}
               id="contact"
               placeholder="0300-1234567"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -93,7 +134,7 @@ function ShowroomSignUp() {
               Showroom Address
             </label>
             <input
-              type="text"
+              type="text" value={address} onChange={(e)=>setaddress(e.target.value)}
               id="address"
               placeholder="1234 Main St, City, Country"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -109,7 +150,7 @@ function ShowroomSignUp() {
             >
               Company/Owner Email
             </label>
-            <input
+            <input value={email} onChange={(e)=>setemail(e.target.value)}
               type="email"
               id="email"
               placeholder="name@example.com"
@@ -124,9 +165,9 @@ function ShowroomSignUp() {
               className=" text-sm block text-[#02073F] font-bold mb-2"
               htmlFor="password"
             >
-              Password
+              Password 
             </label>
-            <input
+            <input  value={password} onChange={(e)=>setpassword(e.target.value)}
               type="password"
               id="password"
               placeholder="********"
@@ -143,7 +184,7 @@ function ShowroomSignUp() {
             >
               Confirm Password
             </label>
-            <input
+            <input value={cpassword} onChange={(e)=>setcpassword(e.target.value)}
               type="password"
               id="confirm-password"
               placeholder="********"
