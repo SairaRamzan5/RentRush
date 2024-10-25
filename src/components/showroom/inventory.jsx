@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ShowroomNavbar from "./showroomNavbar";
 import Drawer from "./drawer";
 import Dialog from "./dialog";
-import { Plus, Edit, Trash } from "lucide-react";
+import { Plus, Edit, Trash, Images } from "lucide-react";
 import axios from "axios";
 import Toast from "../Toast";
 
@@ -14,6 +14,23 @@ function ShowroomInventory() {
   const [vehicleToDelete, setVehicleToDelete] = useState(null);
   const [vehicleToEdit, setVehicleToEdit] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    const fetchVehicles = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/car/get-all-cars', { withCredentials: true });
+        setVehicles(response.data); // Set the fetched data to vehicles state
+        console.log(response)
+
+      } catch (err) {
+        console.log(err)
+        Toast(err.message, "error");
+      }
+    };
+
+    fetchVehicles();
+  }, []); // Run only once on component mount
+
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -33,33 +50,45 @@ function ShowroomInventory() {
     setVehicleToEdit(null);
   };
 
-  const handleSave = async (formData)=>{
+  const handleSave = async (data)=>{
     try {
-      
+      console.log(data)
+      const formData = new FormData();
+
+      // Add non-file fields
+      formData.append("carBrand", data.make);
+      formData.append("rentRate", data.rentalPrice);
+      formData.append("carModel", data.model);
+      formData.append("year", data.year);
+      formData.append("color", data.color);
+      formData.append("engineType", data.engineDisplacement);
+      formData.append("bodyType", data.bodyType);
+      formData.append("mileage", data.mileage);
+      formData.append("transmission", data.transmission);
+    
+      // Check if images array is not null or empty, then append each image
+      if (Array.isArray(data.images) && data.images.length > 0) {
+        data.images.forEach((image) => {
+          console.log(image.name)
+          if (image) formData.append("images", image.name); // Append each image
+        });
+      }
+      console.log(formData)
       if (isEditing) {
         // const updatedVehicles = vehicles.map((vehicle, index) =>
         //   index === vehicleToEdit ? formData : vehicle
         // );
         // setVehicles(updatedVehicles);
-        console.log(formData)
+        // console.log(data)
       } else {
         // const response=await axios.post("http://localhost:5000/api/car/add", { carBrand:formData.make, rentRate:formData.RentalPrice, carModel:formData.model, year:formData.year,make:formData.model, engineType:formData.engineDisplacement, images:formData.images },{withCredentials:true}
         
         // )
-        const response=await axios.post("http://localhost:5000/api/car/add", {
-          carBrand:"toyota",
-          rentRate:123,
-          carModel:"xli limited",
-          year:2014,
-          make:"Gli",
-          engineType:"1.3 Gasoline Engine "
-         },{withCredentials:true}
+        console.log({formData})
+        const response=await axios.post("http://localhost:5000/api/car/add",formData,{withCredentials:true}
         
         )
         Toast(response.data, "success")
-        console.log("message: "+response.message)
-        console.log("message 2: "+response.data)
-        console.log({formData})
         // setVehicles((prevVehicles) => [...prevVehicles, formData]);
       }
       closeDialog();
@@ -68,6 +97,7 @@ function ShowroomInventory() {
       console.log({error})
     }
   };
+  
 
   const handleEdit = (index) => {
     setVehicleToEdit(index);
@@ -117,13 +147,13 @@ function ShowroomInventory() {
                 vehicles.map((vehicle, index) => (
                   <tr key={index} className="text-center">
                     <td className="px-4 py-2 border-b border-gray-700">
-                      <img src={vehicle.image} alt={vehicle.make} className="w-16 h-16 object-cover" />
+                      <img src={vehicle.images} alt={vehicle.make} className="w-16 h-16 object-cover" />
                     </td>
-                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.make}</td>
-                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.model}</td>
+                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.carBrand}</td>
+                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.carModel}</td>
                     <td className="px-4 py-2 border-b border-gray-700">{vehicle.mileage} km</td>
-                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.engineDisplacement}</td>
-                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.rentalPrice} RS/day</td>
+                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.engineType}</td>
+                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.rentRate} RS/day</td>
                     <td className="px-4 py-2 border-b border-gray-700">{vehicle.color}</td>
                     <td className="px-4 py-2 border-b border-gray-700">{vehicle.transmission}</td>
                     <td className="px-4 py-2 border-b border-gray-700">{vehicle.bodyType}</td>

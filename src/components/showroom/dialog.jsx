@@ -5,6 +5,7 @@ function Dialog({ isOpen, onClose, onSave, isEditing, vehicle }) {
     make: "",
     model: "",
     mileage: "",
+    year: "",
     engineDisplacement: "",
     rentalPrice: "",
     color: "",
@@ -131,6 +132,17 @@ function Dialog({ isOpen, onClose, onSave, isEditing, vehicle }) {
                   onChange={handleInputChange}
                   className="w-full p-2 border rounded whitespace-nowrap overflow-hidden text-ellipsis"
                   placeholder="200km"
+                />
+              </div>
+              <div>
+                <label className="block text-xl font-bold mb-1">Registration year</label>
+                <input
+                  type="number"
+                  name="year"
+                  value={formData.year}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                  placeholder="2024"
                 />
               </div>
               <div>
