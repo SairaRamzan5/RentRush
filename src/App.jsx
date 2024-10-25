@@ -8,6 +8,8 @@ import ShowroomInventory from "./components/showroom/inventory.jsx"
 import LandingPage from "./components/landingPage.jsx";
 import CarsDashboard from "./components/customer/Dashboard.jsx";
 import UserProfile from "./components/customer/profile.jsx";
+import Cars from  "./components/customer/cars.jsx";
+import Showrooms from "./components/customer/showrooms.jsx";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/showroom/inventory" element={<ShowroomInventory />}></Route>
           <Route path="/customer/Dashboard" element={<CarsDashboard/>}></Route>
           <Route path="/customer/profile" element={<UserProfile />}></Route>
+          <Route path="/customer/cars" element={<Cars />}></Route>
+          <Route path="/customer/Showrooms" element={<Showrooms />}></Route>
           <Route path="/" element={<LandingPage />}></Route>
         </Routes>
       </BrowserRouter>
