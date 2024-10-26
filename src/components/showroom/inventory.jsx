@@ -24,7 +24,7 @@ function ShowroomInventory() {
 
       } catch (err) {
         console.log(err)
-        Toast(err.message, "error");
+        Toast(err.response.data || err.message || "Something went wrong", "error");
       }
     };
 
