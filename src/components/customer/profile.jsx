@@ -28,10 +28,10 @@ const UserProfile = () => {
     const handleCancel = () => setIsEditing(false);
 
     return (
-        <div className="bg-[#2C2C2C] h-screen"> 
+        <div className="bg-white h-screen"> 
             <Navbar />
 
-            <div className="w-96 justify-center text-center mt-10 m-auto p-4 border bg-white rounded-xl">
+            <div className="w-96 justify-center text-center mt-10 m-auto p-4 bg-white rounded-xl">
                 <h2 className="text-2xl font-bold mb-4">User Profile</h2>
 
                 <div className="profile-fields">

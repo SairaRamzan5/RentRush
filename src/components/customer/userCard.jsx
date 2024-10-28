@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { CircleGauge, Fuel, GripHorizontal } from "lucide-react"
 
 const UserCard = ({ car }) => {
   const [showModal, setShowModal] = useState(false);
@@ -23,9 +24,19 @@ const UserCard = ({ car }) => {
 
       <div className="p-4">
         <h3 className="font-bold text-lg">{car.name}</h3>
-        <div className="flex justify-between text-sm text-gray-500 my-2">
-          <span>{car.mileage} Miles</span>
-          <span>{car.transmission}</span>
+        <div className="grid grid-cols-3 gap-4 text-sm text-black my-2">
+          <div className="flex flex-col items-center">
+            <CircleGauge />
+            <span className="text-gray-500">{car.mileage}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Fuel />
+            <span className="text-gray-500">{car.fuelType}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <GripHorizontal />
+            <span className="text-gray-500">{car.transmission}</span>
+          </div>
         </div>
 
         <div className="flex justify-between items-center pb-4">

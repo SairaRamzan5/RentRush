@@ -132,7 +132,7 @@ const Cars = () => {
         </div>
       </div>
       <div className="bg-white min-h-screen flex justify-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl px-4 py-10 w-full">
+        <div className="grid grid-cols-1 items-center justify-center sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl px-4 py-10 w-full justify-items-center">
           {cars.map((car, index) => (
             <UserCard key={index} car={car} />
           ))}
