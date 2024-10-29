@@ -125,7 +125,7 @@ function ShowroomInventory() {
     <div className="bg-[#2C2C2C] min-h-screen relative">
       <ShowroomNavbar onMenuClick={toggleDrawer} />
 
-      <div className="container mx-auto p-6">
+      <div className="container mx-auto p-6 overflow-auto">
         <div className="text-white">
           <table className="min-w-full bg-gray-800 text-white border border-gray-700">
             <thead>
