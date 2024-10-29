@@ -15,22 +15,25 @@ function ShowroomInventory() {
   const [vehicleToEdit, setVehicleToEdit] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
+  const fetchVehicles = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/api/car/get-all-cars",
+        { withCredentials: true }
+      );
+      setVehicles(response.data); // Set the fetched data to vehicles state
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+      Toast(
+        err.response.data || err.message || "Something went wrong",
+        "error"
+      );
+    }
+  };
   useEffect(() => {
-    const fetchVehicles = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/car/get-all-cars', { withCredentials: true });
-        setVehicles(response.data); // Set the fetched data to vehicles state
-        console.log(response)
-
-      } catch (err) {
-        console.log(err)
-        Toast(err.response.data || err.message || "Something went wrong", "error");
-      }
-    };
-
     fetchVehicles();
   }, []); // Run only once on component mount
-
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -50,9 +53,9 @@ function ShowroomInventory() {
     setVehicleToEdit(null);
   };
 
-  const handleSave = async (data)=>{
+  const handleSave = async (data) => {
     try {
-      console.log(data)
+      console.log(data);
       const formData = new FormData();
 
       // Add non-file fields
@@ -65,16 +68,20 @@ function ShowroomInventory() {
       formData.append("bodyType", data.bodyType);
       formData.append("mileage", data.mileage);
       formData.append("transmission", data.transmission);
-    
+
       // Check if images array is not null or empty, then append each image
       if (Array.isArray(data.images) && data.images.length > 0) {
         data.images.forEach((image) => {
-          console.log(image.name)
+          console.log(image.name);
           if (image) formData.append("images", image.name); // Append each image
         });
       }
-      console.log(formData)
+      console.log(formData);
       if (isEditing) {
+        console.log(isEditing);
+        console.log(formData);
+        console.log(vehicleToEdit);
+        console.log(vehicles);
         // const updatedVehicles = vehicles.map((vehicle, index) =>
         //   index === vehicleToEdit ? formData : vehicle
         // );
@@ -82,22 +89,24 @@ function ShowroomInventory() {
         // console.log(data)
       } else {
         // const response=await axios.post("http://localhost:5000/api/car/add", { carBrand:formData.make, rentRate:formData.RentalPrice, carModel:formData.model, year:formData.year,make:formData.model, engineType:formData.engineDisplacement, images:formData.images },{withCredentials:true}
-        
+
         // )
-        console.log({formData})
-        const response=await axios.post("http://localhost:5000/api/car/add",formData,{withCredentials:true}
-        
-        )
-        Toast(response.data, "success")
+        console.log({ formData });
+        const response = await axios.post(
+          "http://localhost:5000/api/car/add",
+          formData,
+          { withCredentials: true }
+        );
+        Toast(response.data, "success");
+        fetchVehicles();
         // setVehicles((prevVehicles) => [...prevVehicles, formData]);
       }
       closeDialog();
     } catch (error) {
-      Toast(error.response.data, "error")
-      console.log({error})
+      Toast(error.response.data, "error");
+      console.log({ error });
     }
   };
-  
 
   const handleEdit = (index) => {
     setVehicleToEdit(index);
@@ -115,9 +124,15 @@ function ShowroomInventory() {
     setVehicleToDelete(null);
   };
 
-  const confirmDelete = () => {
-    const updatedVehicles = vehicles.filter((_, i) => i !== vehicleToDelete);
-    setVehicles(updatedVehicles);
+  const confirmDelete = async () => {
+    // const updatedVehicles = vehicles.filter((_, i) => i !== vehicleToDelete);
+    // setVehicles(updatedVehicles);
+    const response = await axios.delete(
+      `http://localhost:5000/api/car/delete/${vehicleToDelete}`,
+      { withCredentials: true }
+    );
+    Toast(response.data, "success");
+    fetchVehicles();
     closeDeleteDialog();
   };
 
@@ -130,45 +145,77 @@ function ShowroomInventory() {
           <table className="min-w-full bg-gray-800 text-white border border-gray-700">
             <thead>
               <tr>
+                <th className="px-4 py-2 border-b border-gray-700">Id</th>
                 <th className="px-4 py-2 border-b border-gray-700">Image</th>
                 <th className="px-4 py-2 border-b border-gray-700">Make</th>
                 <th className="px-4 py-2 border-b border-gray-700">Model</th>
                 <th className="px-4 py-2 border-b border-gray-700">Mileage</th>
-                <th className="px-4 py-2 border-b border-gray-700">Engine Displacement</th>
-                <th className="px-4 py-2 border-b border-gray-700">Rental Price</th>
+                <th className="px-4 py-2 border-b border-gray-700">
+                  Engine Displacement
+                </th>
+                <th className="px-4 py-2 border-b border-gray-700">
+                  Rental Price
+                </th>
                 <th className="px-4 py-2 border-b border-gray-700">Color</th>
-                <th className="px-4 py-2 border-b border-gray-700">Transmission</th>
-                <th className="px-4 py-2 border-b border-gray-700">Body Type</th>
+                <th className="px-4 py-2 border-b border-gray-700">
+                  Transmission
+                </th>
+                <th className="px-4 py-2 border-b border-gray-700">
+                  Body Type
+                </th>
                 <th className="px-4 py-2 border-b border-gray-700">Actions</th>
               </tr>
             </thead>
             <tbody>
               {vehicles.length > 0 ? (
                 vehicles.map((vehicle, index) => (
-                  <tr key={index} className="text-center">
+                  <tr key={vehicle._id} className="text-center">
                     <td className="px-4 py-2 border-b border-gray-700">
-                      <img src={vehicle.images} alt={vehicle.make} className="w-16 h-16 object-cover" />
+                      {index}
                     </td>
-                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.carBrand}</td>
-                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.carModel}</td>
-                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.mileage} km</td>
-                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.engineType}</td>
-                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.rentRate} RS/day</td>
-                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.color}</td>
-                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.transmission}</td>
-                    <td className="px-4 py-2 border-b border-gray-700">{vehicle.bodyType}</td>
+                    <td className="px-4 py-2 border-b border-gray-700">
+                      <img
+                        src={vehicle.images}
+                        alt={vehicle.make}
+                        className="w-16 h-16 object-cover"
+                      />
+                    </td>
+                    <td className="px-4 py-2 border-b border-gray-700">
+                      {vehicle.carBrand}
+                    </td>
+                    <td className="px-4 py-2 border-b border-gray-700">
+                      {vehicle.carModel}
+                    </td>
+                    <td className="px-4 py-2 border-b border-gray-700">
+                      {vehicle.mileage} km
+                    </td>
+                    <td className="px-4 py-2 border-b border-gray-700">
+                      {vehicle.engineType}
+                    </td>
+                    <td className="px-4 py-2 border-b border-gray-700">
+                      {vehicle.rentRate} RS/day
+                    </td>
+                    <td className="px-4 py-2 border-b border-gray-700">
+                      {vehicle.color}
+                    </td>
+                    <td className="px-4 py-2 border-b border-gray-700">
+                      {vehicle.transmission}
+                    </td>
+                    <td className="px-4 py-2 border-b border-gray-700">
+                      {vehicle.bodyType}
+                    </td>
                     <td className="px-4 py-2 border-b border-gray-700 flex justify-center space-x-2">
                       <button
                         title="Edit"
                         className="bg-green-600 mt-7 mb-5 text-white p-2 rounded-full hover:bg-green-700"
-                        onClick={() => handleEdit(index)}
+                        onClick={() => handleEdit(vehicle._id)}
                       >
                         <Edit className="w-6 h-6" />
                       </button>
                       <button
                         title="Delete"
                         className="bg-red-600 mt-7 mb-5 text-white p-2 rounded-full hover:bg-red-700"
-                        onClick={() => openDeleteDialog(index)}
+                        onClick={() => openDeleteDialog(vehicle._id)}
                       >
                         <Trash className="w-6 h-6" />
                       </button>
