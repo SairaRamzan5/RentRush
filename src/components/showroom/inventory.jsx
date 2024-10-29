@@ -144,26 +144,17 @@ function ShowroomInventory() {
         <div className="text-white">
           <table className="min-w-full bg-gray-800 text-white border border-gray-700">
             <thead>
-              <tr>
-                <th className="px-4 py-2 border-b border-gray-700">Id</th>
-                <th className="px-4 py-2 border-b border-gray-700">Image</th>
-                <th className="px-4 py-2 border-b border-gray-700">Make</th>
-                <th className="px-4 py-2 border-b border-gray-700">Model</th>
-                <th className="px-4 py-2 border-b border-gray-700">Mileage</th>
-                <th className="px-4 py-2 border-b border-gray-700">
-                  Engine Displacement
-                </th>
-                <th className="px-4 py-2 border-b border-gray-700">
-                  Rental Price
-                </th>
-                <th className="px-4 py-2 border-b border-gray-700">Color</th>
-                <th className="px-4 py-2 border-b border-gray-700">
-                  Transmission
-                </th>
-                <th className="px-4 py-2 border-b border-gray-700">
-                  Body Type
-                </th>
-                <th className="px-4 py-2 border-b border-gray-700">Actions</th>
+              <tr> 
+                <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Image</th>
+                <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Make</th>
+                <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Model</th>
+                <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Mileage</th>
+                <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Engine Displacement</th>
+                <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Rental Price</th>
+                <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Color</th>
+                <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Transmission</th>
+                <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Body Type</th>
+                <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Actions</th>
               </tr>
             </thead>
             <tbody>

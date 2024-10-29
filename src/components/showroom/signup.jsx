@@ -13,6 +13,14 @@ function ShowroomSignUp() {
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
   const [cpassword, setcpassword] = useState('')
+  const [logo, setLogo] = useState(null);
+
+  const handleLogoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setLogo(URL.createObjectURL(file));
+    }
+  };
   const Handlesubmit=(e)=>{
    e.preventDefault();
    if(password!==cpassword){
@@ -51,8 +59,27 @@ function ShowroomSignUp() {
           className="w-[80px] -my-5 -mx-5 -mt-4"
           alt=""
         />
-        <h2 className="text-3xl font-bold text-[#02073F]">Create Account</h2>
+        <h2 className="text-3xl font-bold text-[#02073F]">Register Showroom</h2>
         <form onSubmit={Handlesubmit} className="mt-8  rounded mb-4">
+        <div className="mb-4 text-center">
+            <label className="block text-sm text-[#02073F] font-bold mb-2">
+              Upload Showroom Logo
+            </label>
+            <div className="flex justify-center items-center mb-4">
+              <img
+                src={logo || "/src/assets/avatar-placeholder.png"}
+                alt=""
+                className="w-24 h-24 object-cover rounded-full border border-gray-300"
+              />
+            </div>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleLogoChange}
+              className="text-sm text-gray-600"
+            />
+          </div>
+
           {/* Name */}
           <div className="mb-4">
             <label
