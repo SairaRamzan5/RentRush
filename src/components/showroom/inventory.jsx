@@ -145,6 +145,7 @@ function ShowroomInventory() {
           <table className="min-w-full bg-gray-800 text-white border border-gray-700">
             <thead>
               <tr> 
+              <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Id</th>
                 <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Image</th>
                 <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Make</th>
                 <th className="sticky top-0 z-10 px-4 py-2 border-b border-gray-700">Model</th>
