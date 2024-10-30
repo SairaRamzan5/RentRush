@@ -1,15 +1,16 @@
 import React from "react";
 import Navbar from "../customer/Navbar";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const images = [
-  { src: "/src/assets/slider-image-1.png", alt: "Image 1" },
-  { src: "/src/assets/slider-image-2.png", alt: "Image 2" },
-  { src: "/src/assets/slider-image-3.png", alt: "Image 3" },
-  { src: "/src/assets/slider-image-4.png", alt: "Image 4" },
-  { src: "/src/assets/slider-image-5.png", alt: "Image 5" },
+  { src: "/src/assets/showroom.jpg", alt: "Image 1" },
+  { src: "/src/assets/car.jpg", alt: "Image 2" },
+  { src: "/src/assets/showroom.jpg", alt: "Image 3" },
+  { src: "/src/assets/car.jpg", alt: "Image 4" },
+  { src: "/src/assets/showroom.jpg", alt: "Image 5" },
 ];
 
 const NextArrow = (props) => {
@@ -35,6 +36,8 @@ const PrevArrow = (props) => {
 };
 
 const UserDashboard = () => {
+  const navigate = useNavigate();
+
   const settings = {
     dots: true,
     infinite: true,
@@ -42,7 +45,7 @@ const UserDashboard = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
@@ -50,18 +53,48 @@ const UserDashboard = () => {
   return (
     <>
       <Navbar />
-      <div className="mt-6 max-w-screen-lg mx-auto">
-        <Slider {...settings}>
-          {images.map((image, index) => (
-            <div key={index}>
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-80 object-cover"
-              />
-            </div>
-          ))}
-        </Slider>
+      <div className="mt-6 max-w-screen-lg mx-auto mb-52">
+        <div className="h-screen">
+          <Slider {...settings}>
+            {images.map((image, index) => (
+              <div key={index}>
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-96 object-cover"
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 p-10 lg:p-0">
+          <div
+            onClick={() => navigate("/customer/cars")}
+            className="border p-6 rounded-lg shadow-lg bg-primary cursor-pointer hover:shadow-xl transition-shadow duration-300"
+          >
+            <img
+              src="/src/assets/car.jpg"
+              alt="Cars"
+              className="w-full h-40 object-cover mb-4 rounded-lg"
+            />
+            <h2 className="text-2xl text-white font-semibold mb-2">Cars</h2>
+            <p className="text-white">Search by car name or car model.</p>
+          </div>
+
+          <div
+            onClick={() => navigate("/customer/showrooms")}
+            className="border p-6 rounded-lg shadow-lg bg-primary cursor-pointer hover:shadow-xl transition-shadow duration-300"
+          >
+            <img
+              src="/src/assets/showroom.jpg"
+              alt="Cars"
+              className="w-full h-40 object-cover mb-4 rounded-lg"
+            />
+            <h2 className="text-2xl text-white font-semibold mb-2">Showrooms</h2>
+            <p className="text-white">Search by showroom name or showroom location.</p>
+          </div>
+        </div>
       </div>
     </>
   );
