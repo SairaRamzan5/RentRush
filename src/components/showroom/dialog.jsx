@@ -19,15 +19,17 @@ function Dialog({ isOpen, onClose, onSave, isEditing, vehicle }) {
   useEffect(() => {
     if (isEditing && vehicle) {
       setFormData({
-        make: vehicle.make,
-        model: vehicle.model,
+        id: vehicle._id,
+        make: vehicle.carBrand,
+        model: vehicle.carModel,
         mileage: vehicle.mileage,
-        engineDisplacement: vehicle.engineDisplacement,
-        rentalPrice: vehicle.rentalPrice,
+        engineDisplacement: vehicle.engineType,
+        year: vehicle.year,
+        rentalPrice: vehicle.rentRate,
         color: vehicle.color,
         transmission: vehicle.transmission,
         bodyType: vehicle.bodyType,
-        images: [],
+        images: [vehicle.images],
       });
     } else {
       setFormData({
