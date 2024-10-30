@@ -6,62 +6,62 @@ import { Search } from "lucide-react";
 const showrooms = [
   {
     name: "Toyota Camry New",
-    image: "/src/assets/aboutcar.png",
+    image: "/src/assets/showroom.jpg",
     location: "Islamabad",
   },
   {
     name: "C-Class – 2023",
-    image: "/src/assets/aboutcar.png",
+    image: "/src/assets/showroom.jpg",
     location: "Islamabad",
   },
   {
     name: "Ford Transit – 2021",
-    image: "/src/assets/aboutcar.png",
+    image: "/src/assets/showroom.jpg",
     location: "Islamabad",
   },
   {
     name: "New GLC – 2023",
-    image: "/src/assets/aboutcar.png",
+    image: "/src/assets/showroom.jpg",
     location: "Islamabad",
   },
   {
     name: "Audi A6 3.5 – New",
-    image: "/src/assets/aboutcar.png",
+    image: "/src/assets/showroom.jpg",
     location: "Islamabad",
   },
   {
     name: "Audi A4 4.5 New",
-    image: "/src/assets/aboutcar.png",
+    image: "/src/assets/showroom.jpg",
     location: "Islamabad",
   },
   {
     name: "Ranger Black – 2021",
-    image: "/src/assets/aboutcar.png",
+    image: "/src/assets/showroom.jpg",
     location: "Islamabad",
   },
   {
     name: "Mercedes-Benz, C Class",
-    image: "/src/assets/aboutcar.png",
+    image: "/src/assets/showroom.jpg",
     location: "Islamabad",
   },
   {
     name: "Ranger White – 2022",
-    image: "/src/assets/aboutcar.png",
+    image: "/src/assets/showroom.jpg",
     location: "Islamabad",
   },
   {
     name: "T-Cross – 2023",
-    image: "/src/assets/aboutcar.png",
+    image: "/src/assets/showroom.jpg",
     location: "Islamabad",
   },
   {
     name: "Corolla Altis – 2023",
-    image: "/src/assets/aboutcar.png",
+    image: "/src/assets/showroom.jpg",
     location: "Islamabad",
   },
   {
     name: "Ford Explorer 2023",
-    image: "/src/assets/aboutcar.png",
+    image: "/src/assets/showroom.jpg",
     location: "Islamabad",
   },
 ];

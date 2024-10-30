@@ -1,4 +1,4 @@
-import { Search, User, Calendar, LogOut } from "lucide-react";
+import { Search, User, Calendar, LogOut, House } from "lucide-react";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -36,19 +36,25 @@ const Navbar = () => {
           {isDropdownOpen && (
             <div className="absolute top-12 right-0 w-48 bg-white shadow-lg rounded-lg py-2 z-50">
               <Link
+                to="/customer/dashboard"
+                className="flex items-center px-4 py-2 hover:bg-gray-100"
+              >
+                <House className="mr-2" /> Home
+              </Link>
+              <Link
                 to="/customer/profile"
                 className="flex items-center px-4 py-2 hover:bg-gray-100"
               >
                 <User className="mr-2" /> Profile
               </Link>
               <Link
-                to="/bookings"
+                to="/customer/bookings"
                 className="flex items-center px-4 py-2 hover:bg-gray-100"
               >
                 <Calendar className="mr-2" /> Your Bookings
               </Link>
               <Link
-                to="/logout"
+                to=""
                 className="flex items-center px-4 py-2 hover:bg-gray-100"
               >
                 <LogOut className="mr-2" /> Logout

@@ -10,6 +10,7 @@ import CarsDashboard from "./components/customer/Dashboard.jsx";
 import UserProfile from "./components/customer/profile.jsx";
 import Cars from  "./components/customer/cars.jsx";
 import Showrooms from "./components/customer/showrooms.jsx";
+import Bookings from "./components/customer/bookings.jsx";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/customer/profile" element={<UserProfile />}></Route>
           <Route path="/customer/cars" element={<Cars />}></Route>
           <Route path="/customer/Showrooms" element={<Showrooms />}></Route>
+          <Route path="/customer/bookings" element={<Bookings />}></Route>
           <Route path="/" element={<LandingPage />}></Route>
         </Routes>
       </BrowserRouter>
