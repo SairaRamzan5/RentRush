@@ -54,7 +54,7 @@ const UserDashboard = () => {
     <>
       <Navbar />
       <div className="mt-6 max-w-screen-lg mx-auto mb-52">
-        <div className="h-screen">
+        <div className="h-screen sm:w-auto p-5 lg:p-0">
           <Slider {...settings}>
             {images.map((image, index) => (
               <div key={index}>
@@ -71,7 +71,7 @@ const UserDashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 p-10 lg:p-0">
           <div
             onClick={() => navigate("/customer/cars")}
-            className="border p-6 rounded-lg shadow-lg bg-primary cursor-pointer hover:shadow-xl transition-shadow duration-300"
+            className="border p-6 rounded-lg shadow-lg bg-primary cursor-pointer hover:shadow-xl duration-300 hover:scale-105 transition-transform transform"
           >
             <img
               src="/src/assets/car.jpg"
@@ -84,7 +84,7 @@ const UserDashboard = () => {
 
           <div
             onClick={() => navigate("/customer/showrooms")}
-            className="border p-6 rounded-lg shadow-lg bg-primary cursor-pointer hover:shadow-xl transition-shadow duration-300"
+            className="border p-6 rounded-lg shadow-lg bg-primary cursor-pointer hover:shadow-xl duration-300 hover:scale-105 transition-transform transform"
           >
             <img
               src="/src/assets/showroom.jpg"
