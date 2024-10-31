@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Customers from './Customers';
-import Home from './Home';
+// import Home from './Home';
 import Showroom from './Showroom';
 
 const Adminpage = () => {
@@ -108,7 +108,7 @@ const Adminpage = () => {
                 {/* Main Content */}
                 <main className="flex-1 p-8">
                     <Routes>
-                        <Route path="/" element={<Home />} />
+                        {/* <Route path="/" element={<Home />} /> */}
                         <Route path="/customers" element={<Customers customers={customers} />} />
                         <Route path="/showrooms" element={<Showroom showrooms={showrooms} banShowroom={banShowroom} />} />
                     </Routes>
