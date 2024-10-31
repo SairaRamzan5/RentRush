@@ -13,7 +13,7 @@ const UserCard = ({ car }) => {
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden w-64 relative">
+    <div className="bg-white shadow-2xl rounded-lg overflow-hidden w-64 relative">
       <div className="relative">
         <img
           src={car.image}
