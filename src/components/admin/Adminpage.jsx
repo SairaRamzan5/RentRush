@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Customers from './Customers';
-import Home from './Home';
 import Showroom from './Showroom';
 
 const Adminpage = () => {

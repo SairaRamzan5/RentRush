@@ -116,6 +116,7 @@ const cars = [
 
 const ShowroomDashboard = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("Rented Out");
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -125,16 +126,35 @@ const ShowroomDashboard = () => {
     setIsDrawerOpen(false);
   };
 
+  const availableCars = cars.filter((car) => car.availability === "Available");
+  const rentedCars = cars.filter((car) => car.availability === "Rented Out");
+
   return (
     <>
-    <ShowroomNavbar onMenuClick={toggleDrawer} />
+      <ShowroomNavbar onMenuClick={toggleDrawer} />
 
-      <div className="bg-white min-h-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-6 py-10 justify-items-center">
-        {cars.map((car, index) => (
-          <CarCard key={index} car={car} />
-        ))}
+      <div className="flex justify-center mt-4">
+        <button
+          className={`px-4 py-2 mr-4 font-semibold text-lg ${activeTab === "Rented Out" ? "bg-primary text-white" : "bg-gray-200"}`}
+          onClick={() => setActiveTab("Rented Out")}
+        >
+          Rented Out
+        </button>
+        <button
+          className={`px-4 py-2 font-semibold text-lg ${activeTab === "Available" ? "bg-primary text-white" : "bg-gray-200"}`}
+          onClick={() => setActiveTab("Available")}
+        >
+          Available
+        </button>
       </div>
-      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer} />
+
+      <div className="bg-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-col-4 xl:grid-cols-5 gap-4 px-6 py-10 justify-items-center">
+        {activeTab === "Rented Out"
+          ? rentedCars.map((car, index) => <CarCard key={index} car={car} />)
+          : availableCars.map((car, index) => <CarCard key={index} car={car} />)}
+      </div>
+
+      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer} />
     </>
   );
 };
