@@ -28,28 +28,31 @@ function ShowroomSignUp() {
     console.log(msg);
     Toast(msg,'danger')
     }
-   axios.post("http://localhost:3000/api/signup",{
-    ownerName:owner,
-    showroomName:sname,
-    cnic:cnic,
-    contactNumber:contact,
-    address:address,
-    email:email,
-    password:password,
-    role:'showroom'
-   }).then((response)=>{
-    console.log(response);
-     console.log(response.data)
-    console.log(response.status)
-    if(response.status===201){
-      Toast(response.data,'sucess',navigate('/login'))
-    }
-   }).catch((error)=>{
-    if(error.response.status===400){
-      Toast(error.response.data,'danger')
-    }
-    Toast(error.response,'error')
-   })
+   axios
+     .post("http://localhost:5000/api/signup", {
+       ownerName: owner,
+       showroomName: sname,
+       cnic: cnic,
+       contactNumber: contact,
+       address: address,
+       email: email,
+       password: password,
+       role: "showroom",
+     })
+     .then((response) => {
+       console.log(response);
+       console.log(response.data);
+       console.log(response.status);
+       if (response.status === 201) {
+         Toast(response.data, "sucess", navigate("/login"));
+       }
+     })
+     .catch((error) => {
+       if (error.response.status === 400) {
+         Toast(error.response.data, "danger");
+       }
+       Toast(error.response, "error");
+     });
   }
   return (
     <div className="flex items-center justify-center background min-w-max min-h-screen py-16">
