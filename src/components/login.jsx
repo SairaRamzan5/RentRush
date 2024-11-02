@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from 'axios'
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import Toast from "./Toast";
 const Base_Url = import.meta.env.VITE_API_URL;
 
 function Login() {
+  const navigator = useNavigate();
   const [email, setEmial] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = async (e) => {
@@ -16,7 +17,7 @@ function Login() {
         { email: email, password: password },
         { withCredentials: true }
       );
-      Toast(response.data.message, "success");
+      Toast(response.data.message, "success", navigator("/showroom/inventory"));
     } catch (error) {
       Toast(error.data || "error occured", "error");
     }
