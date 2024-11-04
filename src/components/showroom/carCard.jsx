@@ -40,7 +40,7 @@ const CarCard = ({ car }) => {
         </div>
 
         <div className="flex justify-between items-center pb-4">
-          <span className="text-xl font-bold">{car.price}rs</span>
+          <span className="text-xl font-bold">{car.rentRate}rs</span>
 
           {car.availability === "Rented Out" && (
             <button
