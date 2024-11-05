@@ -14,7 +14,6 @@ import Bookings from "./components/customer/bookings.jsx";
 import Customers from "./components/admin/Customers.jsx";
 import Adminpage from "./components/admin/Adminpage.jsx";
 import Showroom from "./components/admin/Showroom.jsx";
-
 function App() {
   return (
     <>

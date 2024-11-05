@@ -12,7 +12,7 @@ function SignUp() {
   const [password, setpassword] = useState('')
   const handleSignup=(e)=>{
    e.preventDefault();
-   axios.post('http://localhost:5000/api/signup',{
+   axios.post('http://localhost:3000/api/signup',{
     ownerName:name,
     cnic:cnic,
     contactNumber:contact,
