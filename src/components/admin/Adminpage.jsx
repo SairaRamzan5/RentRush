@@ -1,79 +1,23 @@
 
-import { faCar, faSignOutAlt, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faCar,faSignOutAlt, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
-import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import Customers from './Customers';
-// import Home from './Home';
-import Showroom from './Showroom';
-
+import { Link} from 'react-router-dom';
+import { useState } from 'react';
+import Customers from './Customers.jsx'
+import Showroom from './Showroom.jsx';
+// import axios from 'axios'
+// const Base_Url=import.meta.env.VITE_API_URL
 const Adminpage = () => {
-    // const [customers, setCustomers] = useState([
-    //     { 
-    //       id: 1, 
-    //       name: "Ibrahim", 
-    //       email: "Ib@ex.com" 
-    //     },
-    //     { 
-    //       id: 2, 
-    //       name: "Azhar", 
-    //       email: "Az@ex.com" 
-    //     },
-    //     { 
-    //       id: 3, 
-    //       name: "Abdullah", 
-    //       email: "Az@ex.com" 
-    //     },
-    //     { 
-    //       id: 4, 
-    //       name: "Fadi", 
-    //       email: "Az@ex.com" 
-    //     },
-    //     { 
-    //       id: 5, 
-    //       name: "Abbas", 
-    //       email: "Az@ex.com" 
-    //     },
-    //     { 
-    //       id: 6, 
-    //       name: "xyz", 
-    //       email: "Az@ex.com" 
-    //     },
-    // ]);
-
-    // const [showrooms, setShowrooms] = useState([
-    //     { 
-    //       id: 1, 
-    //       name: "Elite Cars", 
-    //       rating: 3.5, 
-    //       status: "Active" 
-    //     },
-    //     { 
-    //       id: 2, 
-    //       name: "Luxury Wheels", 
-    //       rating: 2.5, 
-    //       status: "Active" 
-    //     },
-    //     { 
-    //       id: 3, 
-    //       name: "Prime Motors", 
-    //       rating: 6.5, 
-    //       status: "Active" 
-    //     },
-    //     { 
-    //       id: 4, 
-    //       name: "Royal Rides", 
-    //       rating: 8.5, 
-    //       status: "Active" 
-    //     },
-    // ]);
-
-    // const banShowroom = (id) => {
-    //     setShowrooms(showrooms.map((showroom) =>
-    //         showroom.id === id ? { ...showroom, status: "Banned" } : showroom
-    //     ));
-    //     alert("Showroom has been banned.");
-    // };
+    const [Customer, setCustomer] = useState(false)
+    const [showroom, setShowroom] = useState(false)
+    const handleCustomer=()=>{
+        setShowroom(false)
+        setCustomer(true)
+    }
+    const handleShowroom=()=>{
+        setCustomer(false)
+        setShowroom(true)
+    }
     return (
             <div className="flex min-h-screen bg-gray-100">
                 {/* Sidebar */}
@@ -86,21 +30,23 @@ const Adminpage = () => {
                             <span>Home</span>
                         </Link>
 
-                        <Link to="/admin/customers" className="flex items-center space-x-2 text-lg hover:bg-[#394A9A] p-3 rounded-lg w-full">
+                        <button type='button' onClick={handleCustomer} className="flex items-center space-x-2 text-lg hover:bg-[#394A9A] p-3 rounded-lg w-full">
                             <FontAwesomeIcon icon={faUsers} />
                             <span>Customers</span>
-                        </Link>
+                        </button>
 
-                        <Link to="/admin/showrooms" className="flex items-center space-x-2 text-lg hover:bg-[#394A9A] p-3 rounded-lg w-full">
+                        <button type='button' onClick={handleShowroom}  className="flex items-center space-x-2 text-lg hover:bg-[#394A9A] p-3 rounded-lg w-full">
                             <FontAwesomeIcon icon={faCar} />
                             <span>Showrooms</span>
-                        </Link>
+                        </button>
                         <button className="flex items-center space-x-2 text-lg hover:bg-[#394A9A] p-3 rounded-lg w-full">
                             <FontAwesomeIcon icon={faSignOutAlt} />
                             <span>Logout</span>
                         </button>
                     </nav>
                 </aside>
+                {Customer&&<Customers/>}
+                {showroom&&<Showroom/>}
             </div>
     );
 };

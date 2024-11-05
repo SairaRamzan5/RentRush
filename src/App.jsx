@@ -11,9 +11,7 @@ import UserProfile from "./components/customer/profile.jsx";
 import Cars from  "./components/customer/cars.jsx";
 import Showrooms from "./components/customer/showrooms.jsx";
 import Bookings from "./components/customer/bookings.jsx";
-import Customers from "./components/admin/Customers.jsx";
 import Adminpage from "./components/admin/Adminpage.jsx";
-import Showroom from "./components/admin/Showroom.jsx";
 function App() {
   return (
     <>
@@ -31,8 +29,6 @@ function App() {
           <Route path="/customer/Showrooms" element={<Showrooms />}></Route>
           <Route path="/customer/bookings" element={<Bookings />}></Route>
           <Route path="/admin" element={<Adminpage />}></Route>
-          <Route path="/admin/customers" element={<Customers />}></Route>
-          <Route path="/admin/showrooms" element={<Showroom />}></Route>
           <Route path="/" element={<LandingPage />}></Route>
         </Routes>
       </BrowserRouter>
