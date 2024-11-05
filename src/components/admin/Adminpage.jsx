@@ -1,8 +1,11 @@
 
 import { faCar, faSignOutAlt, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link} from 'react-router-dom';
-
+import React, { useState } from 'react';
+import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Customers from './Customers';
+// import Home from './Home';
+import Showroom from './Showroom';
 
 const Adminpage = () => {
     // const [customers, setCustomers] = useState([
