@@ -63,10 +63,9 @@ function ShowroomInventory() {
       formData.append("mileage", data.mileage);
       formData.append("transmission", data.transmission);
 
-      // Check if images array is not null or empty, then append each image
       if (Array.isArray(data.images) && data.images.length > 0) {
         data.images.forEach((image) => {
-          if (image) formData.append("images", image.name); // Append each image
+          if (image) formData.append("images", image); // Append the actual image file
         });
       }
       if (isEditing) {
@@ -175,8 +174,8 @@ function ShowroomInventory() {
                     </td>
                     <td className="px-4 py-2 border-b border-gray-700">
                       <img
-                        src={vehicle.images}
-                        alt={vehicle.make}
+                        src={`/uploads/${vehicle.images}`}
+                        alt={vehicle.carBrand + " " + vehicle.carModel}
                         className="w-16 h-16 object-cover"
                       />
                     </td>

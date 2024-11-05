@@ -8,12 +8,17 @@ const Base_Url = import.meta.env.VITE_API_URL;
 
 const ShowroomDashboard = () => {
   const [cars, setCars] = useState([]);
+  const [activeTab, setActiveTab] = useState(null);
   const fetchVehicles = async () => {
     try {
       const response = await axios.get(`${Base_Url}/api/car/get-all-cars`, {
         withCredentials: true,
       });
       setCars(response.data); // Set the fetched data to vehicles state
+      const hasRentedCars = response.data.some(
+        (car) => car.availability === "Rented Out"
+      );
+      setActiveTab(hasRentedCars ? "Rented Out" : "Available");
     } catch (err) {
       console.log(err);
       Toast(err.data || err.message || "Something went wrong", "error");
@@ -24,7 +29,6 @@ const ShowroomDashboard = () => {
   }, []);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("Available");
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -36,6 +40,9 @@ const ShowroomDashboard = () => {
 
   const availableCars = cars.filter((car) => car.availability === "Available");
   const rentedCars = cars.filter((car) => car.availability === "Rented Out");
+  // const [activeTab, setActiveTab] = useState(
+  //   rentedCars.length > 0 ? "Rented Out" : "Available"
+  // );
   return (
     <>
       <ShowroomNavbar onMenuClick={toggleDrawer} />

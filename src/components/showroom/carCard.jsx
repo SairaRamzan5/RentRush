@@ -16,14 +16,16 @@ const CarCard = ({ car }) => {
     <div className="bg-white shadow-2xl rounded-lg overflow-hidden w-64 relative">
       <div className="relative">
         <img
-          src={car.image}
-          alt={car.name}
+          src={`/uploads/${car.images}`}
+          alt={car.carBrand + " " + car.carModel}
           className="w-full h-40 object-cover"
         />
       </div>
 
       <div className="p-4 ">
-        <h3 className="font-bold text-lg">{car.name}</h3>
+        <h3 className="font-bold text-lg">
+          {car.carBrand + " " + car.carModel}
+        </h3>
         <div className="grid grid-cols-3 gap-4 text-sm text-black my-2">
           <div className="flex flex-col items-center">
             <CircleGauge />
