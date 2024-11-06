@@ -137,7 +137,9 @@ function Dialog({ isOpen, onClose, onSave, isEditing, vehicle }) {
                 />
               </div>
               <div>
-                <label className="block text-xl font-bold mb-1">Registration year</label>
+                <label className="block text-xl font-bold mb-1">
+                  Registration year
+                </label>
                 <input
                   type="number"
                   name="year"
@@ -148,7 +150,9 @@ function Dialog({ isOpen, onClose, onSave, isEditing, vehicle }) {
                 />
               </div>
               <div>
-                <label className="block text-xl font-bold mb-1">Engine Displacement</label>
+                <label className="block text-xl font-bold mb-1">
+                  Engine Displacement
+                </label>
                 <input
                   type="text"
                   name="engineDisplacement"
@@ -159,14 +163,16 @@ function Dialog({ isOpen, onClose, onSave, isEditing, vehicle }) {
                 />
               </div>
               <div>
-                <label className="block text-xl font-bold mb-1">Rental Price</label>
+                <label className="block text-xl font-bold mb-1">
+                  Rental Price
+                </label>
                 <input
                   type="number"
                   name="rentalPrice"
                   value={formData.rentalPrice}
                   onChange={handleInputChange}
                   className="w-full p-2 border rounded whitespace-nowrap overflow-hidden text-ellipsis"
-                  placeholder="2000/day"
+                  placeholder="200/hr"
                 />
               </div>
               <div>
@@ -181,7 +187,9 @@ function Dialog({ isOpen, onClose, onSave, isEditing, vehicle }) {
                 />
               </div>
               <div>
-                <label className="block text-xl font-bold mb-1">Transmission</label>
+                <label className="block text-xl font-bold mb-1">
+                  Transmission
+                </label>
                 <select
                   name="transmission"
                   value={formData.transmission}
@@ -194,7 +202,9 @@ function Dialog({ isOpen, onClose, onSave, isEditing, vehicle }) {
                 </select>
               </div>
               <div>
-                <label className="block text-xl font-bold mb-1">Body Type</label>
+                <label className="block text-xl font-bold mb-1">
+                  Body Type
+                </label>
                 <select
                   name="bodyType"
                   value={formData.bodyType}
