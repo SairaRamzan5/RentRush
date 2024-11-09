@@ -126,7 +126,7 @@ const UserCard = ({ car }) => {
 
       {showBookingModal && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg relative w-11/12 md:w-3/4 lg:w-1/2 h-3/4 overflow-y-auto">
+          <div className="bg-white p-6 rounded-lg relative h-auto w-96">
             <button
               onClick={closeBookingModal}
               className="absolute top-2 right-2 text-gray-500 hover:text-black"
@@ -137,58 +137,6 @@ const UserCard = ({ car }) => {
             <h2 className="text-2xl font-bold mb-4 text-center">Book Car Now</h2>
 
             <form className="space-y-4">
-              <div className="flex flex-col">
-                <label htmlFor="name" className="text-sm font-semibold">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="border p-2 rounded-md"
-                  placeholder="Enter your name"
-                  required
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <label htmlFor="email" className="text-sm font-semibold">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="border p-2 rounded-md"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <label htmlFor="phone" className="text-sm font-semibold">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  className="border p-2 rounded-md"
-                  placeholder="Enter your phone number"
-                  required
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <label htmlFor="cnic" className="text-sm font-semibold">
-                  CNIC
-                </label>
-                <input
-                  type="text"
-                  id="cnic"
-                  className="border p-2 rounded-md"
-                  placeholder="Enter your CNIC"
-                  required
-                />
-              </div>
-
               <div className="flex flex-col">
                 <label htmlFor="startDate" className="text-sm font-semibold">
                   Rental Start Date
