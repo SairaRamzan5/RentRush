@@ -146,6 +146,7 @@ const UserCard = ({ car }) => {
                   id="name"
                   className="border p-2 rounded-md"
                   placeholder="Enter your name"
+                  required
                 />
               </div>
 
@@ -158,6 +159,7 @@ const UserCard = ({ car }) => {
                   id="email"
                   className="border p-2 rounded-md"
                   placeholder="Enter your email"
+                  required
                 />
               </div>
 
@@ -170,6 +172,7 @@ const UserCard = ({ car }) => {
                   id="phone"
                   className="border p-2 rounded-md"
                   placeholder="Enter your phone number"
+                  required
                 />
               </div>
 
@@ -182,6 +185,7 @@ const UserCard = ({ car }) => {
                   id="cnic"
                   className="border p-2 rounded-md"
                   placeholder="Enter your CNIC"
+                  required
                 />
               </div>
 
@@ -193,6 +197,7 @@ const UserCard = ({ car }) => {
                   type="date"
                   id="startDate"
                   className="border p-2 rounded-md"
+                  required
                 />
               </div>
 
@@ -204,6 +209,7 @@ const UserCard = ({ car }) => {
                   type="date"
                   id="endDate"
                   className="border p-2 rounded-md"
+                  required
                 />
               </div>
 
@@ -215,6 +221,7 @@ const UserCard = ({ car }) => {
                   type="time"
                   id="startTime"
                   className="border p-2 rounded-md"
+                  required
                 />
               </div>
 
@@ -226,6 +233,7 @@ const UserCard = ({ car }) => {
                   type="time"
                   id="endTime"
                   className="border p-2 rounded-md"
+                  required
                 />
               </div>
 
