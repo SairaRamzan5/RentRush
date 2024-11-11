@@ -11,11 +11,6 @@ const Bookings = () => {
     fuelType: "Petrol",
     transmission: "Automatic",
     rentalInfo: {
-      rentername: "John Doe",
-      renteremail: "johndoe@example.com",
-      renterphone: "+1234567890",
-      renterCNIC: "12345-6789012-3",
-      renteraddress: "123 Main St, City",
       rentalStartDate: "2024-11-07",
       rentalEndDate: "2024-11-08",
       rentalStartTime: "10:00 pm",
@@ -117,11 +112,6 @@ const Bookings = () => {
           </div>
 
           <h3 className="text-2xl font-bold mt-6">Rental Information</h3>
-          <p><strong>Renter Name:</strong> {car.rentalInfo.rentername}</p>
-          <p><strong>Email:</strong> {car.rentalInfo.renteremail}</p>
-          <p><strong>Phone:</strong> {car.rentalInfo.renterphone}</p>
-          <p><strong>CNIC:</strong> {car.rentalInfo.renterCNIC}</p>
-          <p><strong>Address:</strong> {car.rentalInfo.renteraddress}</p>
           <p><strong>Rental Start Date:</strong> {car.rentalInfo.rentalStartDate}</p>
           <p><strong>Rental End Date:</strong> {car.rentalInfo.rentalEndDate}</p>
           <p><strong>Rental Start Time:</strong> {car.rentalInfo.rentalStartTime}</p>
