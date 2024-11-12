@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="bg-gray-100 p-8 relative bottom-0 z-20">
@@ -18,13 +20,24 @@ const Footer = () => {
             <li><a href="#" className="text-sm hover:underline">Terms and Conditions</a></li>
           </ul>
         </div>
-
         
         <div className=''>
           <h3 className="text-lg font-bold mb-4">Contact Us</h3>
           <p className="text-sm break-words py-1">syedafatimamansoori@gmail.com</p>
           <p className="text-sm">+92 316 1500304</p>
           <p className="text-sm">Syeda Fatima Mansoor</p>
+        </div>
+
+        <div className=''>
+          <h3 className="text-lg font-bold mb-4">Are you a showroom owner and want your Cars to be rented out?</h3>
+          <div className="buttons flex justify-start">
+              <Link
+              to="/showroom/signup"
+              className="bg-[#C17D3C] rounded py-2 px-4 text-white"
+            >
+              Register Your Showroom
+            </Link>
+            </div>
         </div>
       </div>
 

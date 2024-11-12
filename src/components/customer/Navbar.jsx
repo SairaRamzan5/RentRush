@@ -28,9 +28,9 @@ const Navbar = () => {
             className="flex items-center space-x-3 hover:cursor-pointer p-1 border border-black rounded-3xl"
           >
             <div className="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center">
-              <span className="text-lg font-bold">A</span>
+              <span className="text-lg font-bold">S</span>
             </div>
-            <span className="text-gray-700 font-medium">Abdullah Bin Altaf</span>
+            <span className="text-gray-700 font-medium pr-2">Sawera</span>
           </div>
 
           {isDropdownOpen && (
