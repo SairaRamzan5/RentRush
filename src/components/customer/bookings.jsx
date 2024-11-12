@@ -28,14 +28,21 @@ const Bookings = () => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const calculateProgressAndTimeLeft = () => {
-    const startTime = new Date(`${car.rentalInfo.rentalStartDate} ${car.rentalInfo.rentalStartTime}`);
-    const endTime = new Date(`${car.rentalInfo.rentalEndDate} ${car.rentalInfo.rentalEndTime}`);
+    const startTime = new Date(
+      `${car.rentalInfo.rentalStartDate} ${car.rentalInfo.rentalStartTime}`
+    );
+    const endTime = new Date(
+      `${car.rentalInfo.rentalEndDate} ${car.rentalInfo.rentalEndTime}`
+    );
     const currentTime = new Date();
 
     const totalDuration = endTime - startTime;
     const elapsedTime = currentTime - startTime;
 
-    const progressPercentage = Math.min(100, (elapsedTime / totalDuration) * 100);
+    const progressPercentage = Math.min(
+      100,
+      (elapsedTime / totalDuration) * 100
+    );
 
     if (currentTime >= startTime) {
       setRentalStarted(true);
@@ -47,7 +54,9 @@ const Bookings = () => {
         const timeRemaining = endTime - currentTime;
 
         const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
-        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const minutes = Math.floor(
+          (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+        );
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
         setTimeLeft(`${hours}h ${minutes}m ${seconds}s left`);
@@ -61,8 +70,12 @@ const Bookings = () => {
   };
 
   const calculateRentalDays = () => {
-    const startTime = new Date(`${car.rentalInfo.rentalStartDate} ${car.rentalInfo.rentalStartTime}`);
-    const endTime = new Date(`${car.rentalInfo.rentalEndDate} ${car.rentalInfo.rentalEndTime}`);
+    const startTime = new Date(
+      `${car.rentalInfo.rentalStartDate} ${car.rentalInfo.rentalStartTime}`
+    );
+    const endTime = new Date(
+      `${car.rentalInfo.rentalEndDate} ${car.rentalInfo.rentalEndTime}`
+    );
 
     const totalDurationInHours = (endTime - startTime) / (1000 * 60 * 60);
     const days = Math.ceil(totalDurationInHours / 24);
@@ -123,54 +136,86 @@ const Bookings = () => {
             </div>
           </div>
 
-          <table className="min-w-full border-collapse border border-gray-400 text-left text-sm">
+          <table className="min-w-full table-fixed border-collapse border border-gray-400 text-left text-sm">
             <thead>
               <tr>
-                <th className="border border-gray-400 bg-black text-white p-2 text-center" colSpan={2}>
+                <th
+                  className="border border-gray-400 bg-black text-white p-2 text-center"
+                  colSpan={2}
+                >
                   Rental Information
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="border border-gray-400 p-2 font-semibold">Rental Start Date</td>
-                <td className="border border-gray-400 p-2">{car.rentalInfo.rentalStartDate}</td>
+                <td className="w-1/2 border border-gray-400 p-2 font-semibold">
+                  Rental Start Date
+                </td>
+                <td className="w-1/2 border border-gray-400 p-2">
+                  {car.rentalInfo.rentalStartDate}
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-400 p-2 font-semibold">Rental End Date</td>
-                <td className="border border-gray-400 p-2">{car.rentalInfo.rentalEndDate}</td>
+                <td className="border border-gray-400 p-2 font-semibold">
+                  Rental End Date
+                </td>
+                <td className="border border-gray-400 p-2">
+                  {car.rentalInfo.rentalEndDate}
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-400 p-2 font-semibold">Rental Start Time</td>
-                <td className="border border-gray-400 p-2">{car.rentalInfo.rentalStartTime}</td>
+                <td className="border border-gray-400 p-2 font-semibold">
+                  Rental Start Time
+                </td>
+                <td className="border border-gray-400 p-2">
+                  {car.rentalInfo.rentalStartTime}
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-400 p-2 font-semibold">Rental End Time</td>
-                <td className="border border-gray-400 p-2">{car.rentalInfo.rentalEndTime}</td>
+                <td className="border border-gray-400 p-2 font-semibold">
+                  Rental End Time
+                </td>
+                <td className="border border-gray-400 p-2">
+                  {car.rentalInfo.rentalEndTime}
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-400 p-2 font-semibold">Rental Days</td>
+                <td className="border border-gray-400 p-2 font-semibold">
+                  Rental Days
+                </td>
                 <td className="border border-gray-400 p-2">{rentalDays}</td>
               </tr>
             </tbody>
           </table>
 
-          <table className="min-w-full border-collapse border border-gray-400 text-left text-sm">
+          <table className="min-w-full table-fixed border-collapse border border-gray-400 text-left text-sm">
             <thead>
               <tr>
-                <th className="border border-gray-400 bg-black text-white p-2 text-center" colSpan={2}>
+                <th
+                  className="border border-gray-400 bg-black text-white p-2 text-center"
+                  colSpan={2}
+                >
                   Showroom Information
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="border border-gray-400 p-2 font-semibold">Showroom Name</td>
-                <td className="border border-gray-400 p-2">{car.rentalInfo.showroomName}</td>
+                <td className="w-1/2 border border-gray-400 p-2 font-semibold">
+                  Showroom Name
+                </td>
+                <td className="w-1/2 border border-gray-400 p-2">
+                  {car.rentalInfo.showroomName}
+                </td>
               </tr>
               <tr>
-                <td className="border border-gray-400 p-2 font-semibold">Showroom Location</td>
-                <td className="border border-gray-400 p-2">{car.rentalInfo.showroomLocation}</td>
+                <td className="border border-gray-400 p-2 font-semibold">
+                  Showroom Location
+                </td>
+                <td className="border border-gray-400 p-2">
+                  {car.rentalInfo.showroomLocation}
+                </td>
               </tr>
             </tbody>
           </table>
