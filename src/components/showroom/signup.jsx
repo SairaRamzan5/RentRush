@@ -66,7 +66,7 @@ function ShowroomSignUp() {
         <form onSubmit={Handlesubmit} className="mt-8  rounded mb-4">
         <div className="mb-4 text-center">
             <label className="block text-sm text-[#02073F] font-bold mb-2">
-              Upload Showroom Logo
+              Choose Showroom Picture
             </label>
             <div className="flex justify-center items-center mb-4">
               <img
@@ -234,17 +234,11 @@ function ShowroomSignUp() {
           </div>
         </form>
         <div>
-          <p className="text-xs text-[#02073F] font-bold text-center my-1">or continue with</p>
-          <div className=" flex flex-row justify-center">
-            <div className="px-10 rounded-full hover:cursor-pointer bg-white w-fit py-2">
-              <img src="/src/assets/google.svg" alt="" className="w-5" />
-            </div>
-          </div>
           {/* Redirect to Login */}
           <p className="mt-4 text-center text-[#02073F] text-xs">
             Already have an account?{" "}
             <Link
-              to="/showroom/login"
+              to="/login"
               className="text-[#02073F] font-bold hover:text-[#ffffff]"
             >
               Log In

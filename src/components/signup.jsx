@@ -172,12 +172,6 @@ function SignUp() {
           </div>
         </form>
         <div>
-          <p className="text-xs text-center font-bold text-[#02073F] my-1">or continue with</p>
-          <div className=" flex flex-row justify-center">
-            <div className="px-10 rounded-full hover:cursor-pointer bg-white w-fit py-2">
-              <img src="/src/assets/google.svg" alt="" className="w-5" />
-            </div>
-          </div>
           {/* Redirect to Login */}
           <p className="mt-4 text-center text-[#02073F] text-xs">
             Already have an account?{" "}

@@ -73,20 +73,10 @@ function Login() {
               type="submit"
               className="bg-[#C17D3C] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             >
-              Sign In
+              Login
             </button>
           </div>
         </form>
-        <div>
-          <p className="text-xs text-center my-1 mb-3 font-bold text-[#02073F]">
-            or continue with
-          </p>
-          <div className=" flex flex-row justify-center">
-            <div className="px-10 rounded-full bg-white hover:cursor-pointer w-fit py-2">
-              <img src="/src/assets/google.svg" alt="" className="w-5" />
-            </div>
-          </div>
-        </div>
         <p className="mt-4 text-center text-[#02073F] text-xs">
           Don't have an account?&nbsp;
           <Link
