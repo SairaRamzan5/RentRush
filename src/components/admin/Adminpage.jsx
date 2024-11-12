@@ -2,11 +2,11 @@
 import { faCar,faSignOutAlt, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link} from 'react-router-dom';
-import { useState } from 'react';
+import { useState,useEffect} from 'react';
 import Customers from './Customers.jsx'
 import Showroom from './Showroom.jsx';
-// import axios from 'axios'
-// const Base_Url=import.meta.env.VITE_API_URL
+import axios from 'axios';
+const Base_Url=import.meta.env.VITE_API_URL
 const Adminpage = () => {
     const [Customer, setCustomer] = useState(false)
     const [showroom, setShowroom] = useState(false)
@@ -18,6 +18,24 @@ const Adminpage = () => {
         setCustomer(false)
         setShowroom(true)
     }
+    const [Customerdata, setCustomerdata]=useState([])
+    const [Showroomdata, setShowroomdata] = useState([])
+    useEffect(() => {
+      const fetchdata= async()=>{
+          try {
+              const response=await axios.get(`${Base_Url}/api/admin/adminview`)
+              setCustomerdata(response.data.clientSection)
+              setShowroomdata(response.data.showroomSection)
+          } catch (error) {
+              console.log(error)
+          }
+      }
+      fetchdata()
+      },[])
+      useEffect(() => {
+       console.log("Showroom data",Showroomdata);
+       console.log("Customer data",Customerdata);
+      }, [Customerdata,Showroomdata])
     return (
             <div className="flex min-h-screen bg-gray-100">
                 {/* Sidebar */}
@@ -29,12 +47,10 @@ const Adminpage = () => {
                             <FontAwesomeIcon icon={faUsers} />
                             <span>Home</span>
                         </Link>
-
                         <button type='button' onClick={handleCustomer} className="flex items-center space-x-2 text-lg hover:bg-[#394A9A] p-3 rounded-lg w-full">
                             <FontAwesomeIcon icon={faUsers} />
                             <span>Customers</span>
                         </button>
-
                         <button type='button' onClick={handleShowroom}  className="flex items-center space-x-2 text-lg hover:bg-[#394A9A] p-3 rounded-lg w-full">
                             <FontAwesomeIcon icon={faCar} />
                             <span>Showrooms</span>
@@ -45,8 +61,8 @@ const Adminpage = () => {
                         </button>
                     </nav>
                 </aside>
-                {Customer&&<Customers/>}
-                {showroom&&<Showroom/>}
+                {Customer&&<Customers data={Customerdata}/>}
+                {showroom&&<Showroom value={Showroomdata}/>}
             </div>
     );
 };

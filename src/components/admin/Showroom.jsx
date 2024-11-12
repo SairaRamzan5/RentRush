@@ -1,8 +1,7 @@
 import { faBan, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
-
-const Showroom = () => {
+import { useState} from 'react';
+const Showroom = ({value}) => {
     const [status, setStatus] = useState('active');
     const [isRatingsOpen, setIsRatingsOpen] = useState(false);
 
@@ -30,13 +29,15 @@ const Showroom = () => {
     return (
         <section className="mb-8 ml-10 mr-10 w-full">
             <h2 className="text-2xl font-semibold text-[#394A9A] mb-4">Showroom Accounts</h2>
-            <div className="grid grid-cols-1 gap-4 w-full">
+            {value.map((data)=>{
+                return(<>
+                <div className="grid grid-cols-1 gap-4 w-full">
                 <div className="bg-white p-6 rounded-lg shadow-xl hover:shadow-xl hover:cursor-pointer transition sm:flex justify-between items-center w-full">
                     <div>
-                        <p className="text-xl font-bold">Showroom Name</p>
-                        <p className="text-gray-600">Owner Name:</p>
-                        <p className="text-gray-600">Owner CNIC:</p>
-                        <p className="text-gray-600">Showroom Address:</p>
+                        <p className="text-xl font-bold">Showroom name:{data.showroomName}</p>
+                        <p className="text-gray-600">Owner Name:{data.ownerName}</p>
+                        <p className="text-gray-600">Owner CNIC:{data.cnic}</p>
+                        <p className="text-gray-600">Showroom Address:{data.address}</p>
                         <button
                             className="text-blue-500 underline hover:text-blue-700"
                             onClick={() => setIsRatingsOpen(true)}
@@ -88,7 +89,10 @@ const Showroom = () => {
                     </div>
                 </div>
             )}
+                </>)
+            })}
         </section>
+    
     );
 };
 
