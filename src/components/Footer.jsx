@@ -14,10 +14,12 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-bold mb-4">Company</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="text-sm hover:underline">Rent Details</a></li>
-            <li><a href="#" className="text-sm hover:underline">Why Choose Us</a></li>
-            <li><a href="#" className="text-sm hover:underline">Register</a></li>
-            <li><a href="#" className="text-sm hover:underline">Terms and Conditions</a></li>
+            <li><a href="#Home" className="text-sm hover:underline">Home</a></li>
+            <li><a href="#steps" className="text-sm hover:underline">How It Works</a></li>
+            <li><a href="#requirements" className="text-sm hover:underline">Requirements</a></li>
+            <li><a href="#detail" className="text-sm hover:underline">Why Choose Us</a></li>
+            <li><a href="#rent" className="text-sm hover:underline">Testimonials</a></li>
+            <li><a href="/showroom/signup" className="text-sm hover:underline">Register Your Showroom</a></li>
           </ul>
         </div>
         
@@ -26,18 +28,6 @@ const Footer = () => {
           <p className="text-sm break-words py-1">syedafatimamansoori@gmail.com</p>
           <p className="text-sm">+92 316 1500304</p>
           <p className="text-sm">Syeda Fatima Mansoor</p>
-        </div>
-
-        <div className=''>
-          <h3 className="text-lg font-bold mb-4">Are you a showroom owner and want your Cars to be rented out?</h3>
-          <div className="buttons flex justify-start">
-              <Link
-              to="/showroom/signup"
-              className="bg-[#C17D3C] rounded py-2 px-4 text-white"
-            >
-              Register Your Showroom
-            </Link>
-            </div>
         </div>
       </div>
 
