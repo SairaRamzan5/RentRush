@@ -21,12 +21,18 @@ function LandingPage() {
               specific needs of car rental business owners. This easy to use car
               rental software will let you manage.
             </p>
-            <div className="buttons flex justify-start">
+            <div className="buttons flex justify-start gap-6">
               <Link
               to="/signup"
-              className="bg-[#C17D3C] rounded py-2 px-4 text-white"
+              className="bg-[#C17D3C] rounded py-3 px-8 text-white font-poppins text-lg"
             >
-              Register
+              BOOKING NOW
+            </Link>
+            <Link
+              to="/showroom/signup"
+              className="bg-transparent border border-[#C17D3C] rounded py-3 px-8 text-white font-poppins text-lg hover:bg-[#C17D3C] transition-all"
+            >
+              REGISTER SHOWROOM
             </Link>
             </div>
           </div>
