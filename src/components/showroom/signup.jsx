@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import Toast from "../Toast";
 import { useNavigate } from "react-router-dom";
+const Base_Url = import.meta.env.VITE_API_URL;
 function ShowroomSignUp() {
   const navigate=useNavigate()
   const [sname, setsname] = useState('')
@@ -29,7 +30,7 @@ function ShowroomSignUp() {
     Toast(msg,'danger')
     }
    axios
-     .post("http://localhost:5000/api/signup", {
+     .post(`${Base_Url}/api/signup`, {
        ownerName: owner,
        showroomName: sname,
        cnic: cnic,

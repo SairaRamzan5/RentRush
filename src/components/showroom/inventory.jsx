@@ -5,7 +5,7 @@ import Dialog from "./dialog";
 import { Plus, Edit, Trash, Images } from "lucide-react";
 import axios from "axios";
 import Toast from "../Toast";
-
+const Base_Url = import.meta.env.VITE_API_URL;
 function ShowroomInventory() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -17,7 +17,7 @@ function ShowroomInventory() {
   const fetchVehicles = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/car/get-all-cars",
+        `${Base_Url}/api/car/get-all-cars`,
         { withCredentials: true }
       );
       setVehicles(response.data); // Set the fetched data to vehicles state
@@ -70,7 +70,7 @@ function ShowroomInventory() {
       }
       if (isEditing) {
         const response = await axios.put(
-          `http://localhost:5000/api/car/update/${vehicles[vehicleToEdit]?._id}`,
+          `${Base_Url}/api/car/update/${vehicles[vehicleToEdit]?._id}`,
           formData,
           { withCredentials: true }
         );
@@ -79,7 +79,7 @@ function ShowroomInventory() {
       } else {
         console.log({ formData });
         const response = await axios.post(
-          "http://localhost:5000/api/car/add",
+          `${Base_Url}/api/car/add`,
           formData,
           { withCredentials: true }
         );
@@ -113,7 +113,7 @@ function ShowroomInventory() {
     // const updatedVehicles = vehicles.filter((_, i) => i !== vehicleToDelete);
     // setVehicles(updatedVehicles);
     const response = await axios.delete(
-      `http://localhost:5000/api/car/delete/${vehicleToDelete}`,
+      `${Base_Url}/api/car/delete/${vehicleToDelete}`,
       { withCredentials: true }
     );
     Toast(response.data, "success");
