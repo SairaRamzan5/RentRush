@@ -1,35 +1,10 @@
 import {faBan, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState,useEffect} from 'react';
-const Base_Url=import.meta.env.VITE_API_URL
-import axios from 'axios'
+import { useState} from 'react';
 const Showroom = ({value}) => {
     const [status, setStatus] = useState('active');
     const [Show_ban, setShow_ban] = useState([])
     const [isRatingsOpen, setIsRatingsOpen] = useState(false);
-     const Banshowroom=async(id)=>{
-        try {
-            const url=`${Base_Url}/api/admin/banshowroom/${id}`
-        const response=await axios.post(url)  // this api ban the showroom
-          console.log(response.data.msg)
-          alert(response.data.msg)
-        } catch (error) {
-           console.log(error.response.data.msg);
-           alert(error.response.data.msg)
-        }
-     }
-  useEffect(() => {
-   const Show_Ban_User=async ()=>{
-    const response2=await axios.get(`${Base_Url}/api/admin/viewBanUser`)//this api fetch status baned orActive
-     setShow_ban(response2)
-    console.log(Show_ban);
-   }
-Show_Ban_User()
-  },[])
-//   Log updated the ban showroom
-useEffect(() => {
-    console.log(Show_ban)
-}, [Show_ban])
 
     const handleStatusChange = (newStatus) => {
         const confirmMessage =
@@ -57,7 +32,7 @@ useEffect(() => {
             {value.map((data)=>{
                 return(<>
                 <div className="grid grid-cols-1 gap-4 w-full">
-                <div className="bg-white p-6 my-2 rounded-lg shadow-xl hover:shadow-xl hover:cursor-pointer transition sm:flex justify-between items-center w-full">
+                <div className="bg-white p-6 rounded-lg shadow-xl hover:shadow-xl hover:cursor-pointer transition sm:flex justify-between items-center w-full">
                     <div>
                         <p className="text-xl font-bold">Showroom name:{data.showroomName}</p>
                         <p className="text-gray-600">Owner Name:{data.ownerName}</p>
@@ -79,10 +54,9 @@ useEffect(() => {
                                 ? 'bg-red-500 hover:bg-red-600'
                                 : 'bg-green-500 hover:bg-green-600'
                         }`}
-                        onClick={()=>Banshowroom(data._id)}
-                        //   onClick={() =>
-                        //      handleStatusChange(status === 'active' ? 'banned' : 'active')
-                        // }
+                        onClick={() =>
+                            handleStatusChange(status === 'active' ? 'banned' : 'active')
+                        }
                     >
                         <FontAwesomeIcon icon={status === 'active' ? faBan : faCheck} />{' '}
                         {status === 'active' ? 'Ban' : 'Activate'}
@@ -90,35 +64,46 @@ useEffect(() => {
                 </div>
             </div>
 
-            {/* Ratings Section */}
-            {isRatingsOpen && (
-                <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center z-50">
-                    <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-full">
-                        <h3 className="text-xl font-bold mb-4">Showroom Ratings & Feedback</h3>
-                        <div className="max-h-60 overflow-y-auto">
-                            <ul>
-                                {ratings.map((rating, index) => (
-                                    <li key={index} className="mb-4 border-b pb-2">
-                                        <p className="font-semibold">{rating.user}</p>
-                                        <p>Rating: {rating.rating} / 5</p>
-                                        <p className="italic">{rating.feedback}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <button
-                            className="mt-4 bg-primary text-white px-4 py-2 rounded-lg transition duration-200"
-                            onClick={() => setIsRatingsOpen(false)}
-                        >
-                            Close
-                        </button>
-                    </div>
-                </div>
-            )}
-                </>)
+                        {isRatingsOpen && (
+                            <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center z-50">
+                                <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-full">
+                                    <h3 className="text-xl font-bold mb-4">Showroom Ratings & Feedback</h3>
+                                    <div className="max-h-60 overflow-y-auto">
+                                        <ul>
+                                            {ratings.map((rating, index) => (
+                                                <li key={index} className="mb-4 border-b pb-2">
+                                                    <p className="font-semibold">{rating.user}</p>
+                                                    <p>Rating: {rating.rating} / 5</p>
+                                                    <p className="italic">{rating.feedback}</p>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <button
+                                        className="mt-4 bg-primary text-white px-4 py-2 rounded-lg transition duration-200"
+                                        onClick={() => setIsRatingsOpen(false)}
+                                    >
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        {isConfirmDialogOpen && (
+                            <ConfirmationDialog
+                                message={
+                                    nextStatus === 'banned'
+                                        ? 'Are you sure you want to ban this showroom?'
+                                        : 'Are you sure you want to activate this showroom?'
+                                }
+                                onConfirm={handleStatusChange}
+                                onCancel={() => setIsConfirmDialogOpen(false)}
+                            />
+                        )}
+                    </>
+                );
             })}
         </section>
-    
     );
 };
 

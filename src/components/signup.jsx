@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from 'axios'
 import Toast from "./Toast";
+const Base_Url = import.meta.env.VITE_API_URL;
 function SignUp() {
   const navigate = useNavigate();
   const [name, setname] = useState('')
@@ -12,7 +13,7 @@ function SignUp() {
   const [password, setpassword] = useState('')
   const handleSignup=(e)=>{
    e.preventDefault();
-   axios.post('http://localhost:3000/api/signup',{
+   axios.post(`${Base_Url}/api/signup`,{
     ownerName:name,
     cnic:cnic,
     contactNumber:contact,
