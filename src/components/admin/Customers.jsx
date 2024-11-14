@@ -4,7 +4,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 const Customers = ({data}) => {
     return (
   <>  
-  <h2 className="text-2xl font-semibold text-[#394A9A] mb-4">Customer Accounts</h2>
+  <h2 className="  grid-cols-12  break-before-column font-semibold text-[#363843] ">Customer Accounts</h2>
   {
     data.map((value)=>{
       return(
