@@ -1,9 +1,35 @@
-import { faBan, faCheck } from '@fortawesome/free-solid-svg-icons';
+import {faBan, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState} from 'react';
+import { useState,useEffect} from 'react';
+const Base_Url=import.meta.env.VITE_API_URL
+import axios from 'axios'
 const Showroom = ({value}) => {
     const [status, setStatus] = useState('active');
+    const [Show_ban, setShow_ban] = useState([])
     const [isRatingsOpen, setIsRatingsOpen] = useState(false);
+     const Banshowroom=async(id)=>{
+        try {
+            const url=`${Base_Url}/api/admin/banshowroom/${id}`
+        const response=await axios.post(url)  // this api ban the showroom
+          console.log(response.data.msg)
+          alert(response.data.msg)
+        } catch (error) {
+           console.log(error.response.data.msg);
+           alert(error.response.data.msg)
+        }
+     }
+  useEffect(() => {
+   const Show_Ban_User=async ()=>{
+    const response2=await axios.get(`${Base_Url}/api/admin/viewBanUser`)//this api fetch status baned orActive
+     setShow_ban(response2)
+    console.log(Show_ban);
+   }
+Show_Ban_User()
+  },[])
+//   Log updated the ban showroom
+useEffect(() => {
+    console.log(Show_ban)
+}, [Show_ban])
 
     const handleStatusChange = (newStatus) => {
         const confirmMessage =
@@ -15,7 +41,6 @@ const Showroom = ({value}) => {
             setStatus(newStatus);
         }
     };
-
     const ratings = [
         { user: 'John Doe', rating: 4, feedback: 'Great service and friendly staff!' },
         { user: 'Jane Smith', rating: 5, feedback: 'Amazing experience, highly recommend!' },
@@ -32,7 +57,7 @@ const Showroom = ({value}) => {
             {value.map((data)=>{
                 return(<>
                 <div className="grid grid-cols-1 gap-4 w-full">
-                <div className="bg-white p-6 rounded-lg shadow-xl hover:shadow-xl hover:cursor-pointer transition sm:flex justify-between items-center w-full">
+                <div className="bg-white p-6 my-2 rounded-lg shadow-xl hover:shadow-xl hover:cursor-pointer transition sm:flex justify-between items-center w-full">
                     <div>
                         <p className="text-xl font-bold">Showroom name:{data.showroomName}</p>
                         <p className="text-gray-600">Owner Name:{data.ownerName}</p>
@@ -54,9 +79,10 @@ const Showroom = ({value}) => {
                                 ? 'bg-red-500 hover:bg-red-600'
                                 : 'bg-green-500 hover:bg-green-600'
                         }`}
-                        onClick={() =>
-                            handleStatusChange(status === 'active' ? 'banned' : 'active')
-                        }
+                        onClick={()=>Banshowroom(data._id)}
+                        //   onClick={() =>
+                        //      handleStatusChange(status === 'active' ? 'banned' : 'active')
+                        // }
                     >
                         <FontAwesomeIcon icon={status === 'active' ? faBan : faCheck} />{' '}
                         {status === 'active' ? 'Ban' : 'Activate'}

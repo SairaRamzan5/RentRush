@@ -37,7 +37,6 @@ const PrevArrow = (props) => {
 
 const UserDashboard = () => {
   const navigate = useNavigate();
-
   const settings = {
     dots: true,
     infinite: true,
