@@ -1,9 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Toast from "../Toast";
 import { CircleGauge, Fuel, GripHorizontal } from "lucide-react";
+const Base_Url = import.meta.env.VITE_API_URL;
 
 const UserCard = ({ car }) => {
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [showBookingModal, setShowBookingModal] = useState(false);
+  const [vehicles, setVehicles] = useState([]);
+
+  const fetchVehicles = async () => {
+    try {
+      const response = await axios.get(
+        `${Base_Url}/api/car/get-cars`,
+        { withCredentials: true }
+      );
+      setVehicles(response.data); // Set the fetched data to vehicles state
+    } catch (err) {
+      console.log(err);
+      Toast(err.data || err.message || "Something went wrong", "error");
+    }
+  };
+  useEffect(() => {
+    fetchVehicles();
+  }, []);
 
   const openDetailsModal = () => {
     setShowDetailsModal(true);
