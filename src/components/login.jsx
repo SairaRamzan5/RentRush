@@ -8,19 +8,34 @@ function Login() {
   const navigator = useNavigate();
   const [email, setEmial] = useState("");
   const [password, setPassword] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${Base_Url}/api/login`,
-        { email: email, password: password },
-        { withCredentials: true }
-      );
-      Toast(response.data.message, "success", navigator("/showroom/inventory"));
+        const response = await axios.post(
+            `${Base_Url}/api/login`,
+            { email: email, password: password },
+            { withCredentials: true }
+        );
+ 
+        const userRole = response.data.role;
+        if (userRole === 'admin') {
+            Toast("Yahoo! Login Successfull!", "success");
+            navigator("/admin");
+        } else if (userRole === 'client') {
+            Toast("Yahoo! Login Successfull!", "success");
+            navigator("/customer/cars");
+        } else if (userRole === 'showroom') {
+            Toast("Welcome to Showroom!", "success");
+            navigator("/showroom/inventory");
+        } else {
+            Toast("Role not recognized.", "error");
+            navigator("/login"); 
+        }
     } catch (error) {
-      Toast(error.data || "error occured", "error");
+        Toast(error.response?.data?.message || "An error occurred", "error");
     }
-  };
+};
   return (
     <div className="flex items-center justify-center background min-h-screen min-w-max">
       <div className="w-screen h-fit max-w-md py-5 px-7 bg-gray-300 backdrop-blur-lg bg-white/30 border border-white/10 rounded-3xl  p-5 shadow-lg">
