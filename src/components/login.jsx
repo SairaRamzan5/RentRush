@@ -19,6 +19,7 @@ function Login() {
         );
  
         const userRole = response.data.role;
+        localStorage.setItem("token", response.data.token);
         if (userRole === 'admin') {
             Toast("Yahoo! Login Successfull!", "success");
             navigator("/admin");
