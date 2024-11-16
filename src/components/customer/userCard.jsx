@@ -14,12 +14,12 @@ const UserCard = ({ car }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-    console.log("Submitting booking request..."); // Log when the submission starts
+    e.preventDefault(); 
+    console.log("Submitting booking request..."); 
 
     try {
         const response = await axios.post(
-            `${Base_Url}/api/bookcar/book`, // Ensure Base_Url is defined
+            `${Base_Url}/api/bookcar/book`, 
             {
                 carId: car._id,
                 rentalStartDate,
@@ -30,11 +30,24 @@ const UserCard = ({ car }) => {
             { withCredentials: true }
         );
 
-        console.log("Response received:", response.data); // Log the response data
-        Toast(response.data.message, 'Car Booked Successfully'); 
-        closeBookingModal(); // Close the modal after booking
+        console.log("Response received:", response.data); 
+        Toast(response.data.message); 
+
+        const invoiceUrl = response.data.invoiceUrl;
+        if (invoiceUrl) {
+          Toast(
+            <>
+                {response.data.message}{" "}
+                <a href={invoiceUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'blue', textDecoration: 'underline' }}>
+                    Click here to download the Invoice
+                </a>
+            </>
+        );
+        }
+
+        closeBookingModal();
     } catch (error) {
-        console.error("Error occurred during booking:", error); // Log the error
+        console.error("Error occurred during booking:", error);
         setErrorMessage(error.response?.data?.message || "An error occurred");
     }
 };
