@@ -24,13 +24,13 @@ function LandingPage() {
             <div className="buttons flex justify-start gap-6">
               <Link
               to="/signup"
-              className="bg-[#C17D3C] rounded py-3 px-8 text-white font-poppins text-lg"
+              className="bg-[#C17D3C] rounded py-3 px-8 text-black font-poppins text-lg font-medium"
             >
               BOOKING NOW
             </Link>
             <Link
               to="/showroom/signup"
-              className="bg-transparent border border-[#C17D3C] rounded py-3 px-8 text-white font-poppins text-lg hover:bg-[#C17D3C] transition-all"
+              className="bg-transparent border border-[#C17D3C] rounded py-3 px-8 text-white font-poppins font-medium text-lg hover:bg-[#C17D3C] transition-all hover:text-black"
             >
               REGISTER SHOWROOM
             </Link>

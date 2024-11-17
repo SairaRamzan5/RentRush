@@ -32,8 +32,8 @@ const Navbar = () => {
     }
   }
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="mx-auto px-4  flex justify-between items-center">
+    <nav className="bg-tertiary shadow-md sticky top-0 z-50">
+      <div className="mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
           <Link
           to="/"
@@ -41,24 +41,24 @@ const Navbar = () => {
             <img
               src="/src/assets/logo.svg"
               alt="Logo"
-              className="-my-3 h-[100px] mr-2"
+              className="-my-3 h-[100px] mr-2 fill-white"
             />
           </Link>
         </div>
         <div className="flex flex-row gap-3">
           <div className="hidden md:flex space-x-4 px-2">
-            <li onClick={scrollToHome} className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]">Home</li>
-            <li onClick={scrollToSteps} className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]">How it Works</li>
-            <li onClick={scrollToRequirements} className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]">Requirements</li>
-            <li onClick={scrollToDetails} className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]">Why Choose Us</li>
-            <li className="list-none cursor-pointer text-gray-700 hover:text-[#C17D3C]" onClick={scrollToTest}>Testimonials</li>
+            <li onClick={scrollToHome} className="list-none cursor-pointer text-gray-100 hover:text-[#C17D3C] text-xl font-semibold">Home</li>
+            <li onClick={scrollToSteps} className="list-none cursor-pointer text-gray-100 hover:text-[#C17D3C] text-xl font-semibold">How it Works</li>
+            <li onClick={scrollToRequirements} className="list-none cursor-pointer text-gray-100 hover:text-[#C17D3C] text-xl font-semibold">Requirements</li>
+            <li onClick={scrollToDetails} className="list-none cursor-pointer text-gray-100 hover:text-[#C17D3C] text-xl font-semibold">Why Choose Us</li>
+            <li className="list-none cursor-pointer text-gray-100 hover:text-[#C17D3C] text-xl font-semibold" onClick={scrollToTest}>Testimonials</li>
           </div>
         </div>
         <div>
           <div className="flex space-x-4 justify-center items-center">
             <Link
               to="/login"
-              className="bg-[#C17D3C] py-1 text-white px-5  rounded "
+              className=" border border-[#C17D3C] bg-transparent hover:text-black hover:bg-[#C17D3C] transition-all rounded py-2 px-10 text-white font-poppins text-lg tracking-widest"
             >
               Login
             </Link>
