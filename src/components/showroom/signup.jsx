@@ -14,40 +14,43 @@ function ShowroomSignUp() {
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
   const [cpassword, setcpassword] = useState('')
+ const [image, setimage] = useState(null)
   const [logo, setLogo] = useState(null);
-  const [license, setLicense] = useState("");
+  // const [license, setLicense] = useState("");
 
   const handleLogoChange = (e) => {
     const file = e.target.files[0];
+    setimage(file);
     if (file) {
       setLogo(URL.createObjectURL(file));
     }
   };
   const Handlesubmit = (e) => {
     e.preventDefault();
+    if(!image){
+      return console.log('Image is required');
+    }
+    const formData=new FormData();
+    formData.append('images',image);
+    formData.append('ownerName',owner)
+    formData.append("showroomName", sname);
+    formData.append("cnic", cnic);
+    formData.append("contactNumber", contact);
+    formData.append("address", address);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("role", "showroom");
     if (password !== cpassword) {
       let msg = "Check your confirm password";
       console.log(msg);
       Toast(msg, "error");
       return;
     }
-    if (license === "") {
-      Toast("License or Registration number is required", "error");
-      return;
-    }
-    axios
-      .post(`${Base_Url}/api/signup`, {
-        ownerName: owner,
-        showroomName: sname,
-        cnic: cnic,
-        contactNumber: contact,
-        address: address,
-        email: email,
-        password: password,
-        role: "showroom",
-        license,
-      })
-      .then((response) => {
+    // if (license === "") {
+    //   Toast("License or Registration number is required", "error");
+    //   return;
+    // }
+    axios.post(`${Base_Url}/api/signup`,formData).then((response) => {
         console.log(response);
         console.log(response.data);
         console.log(response.status);
@@ -209,7 +212,7 @@ function ShowroomSignUp() {
             />
           </div>
           {/* license */}
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label
               className=" text-sm block text-[#02073F] font-bold mb-2"
               htmlFor="email"
@@ -225,7 +228,7 @@ function ShowroomSignUp() {
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
               required
             />
-          </div>
+          </div> */}
 
           {/* Password */}
           <div className="mb-4">
