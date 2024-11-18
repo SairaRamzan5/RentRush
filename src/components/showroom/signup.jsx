@@ -15,6 +15,7 @@ function ShowroomSignUp() {
   const [password, setpassword] = useState('')
   const [cpassword, setcpassword] = useState('')
   const [logo, setLogo] = useState(null);
+  const [license, setLicense] = useState("");
 
   const handleLogoChange = (e) => {
     const file = e.target.files[0];
@@ -22,39 +23,45 @@ function ShowroomSignUp() {
       setLogo(URL.createObjectURL(file));
     }
   };
-  const Handlesubmit=(e)=>{
-   e.preventDefault();
-   if(password!==cpassword){
-    let msg='Check your confirm password'
-    console.log(msg);
-    Toast(msg,'danger')
+  const Handlesubmit = (e) => {
+    e.preventDefault();
+    if (password !== cpassword) {
+      let msg = "Check your confirm password";
+      console.log(msg);
+      Toast(msg, "error");
+      return;
     }
-   axios
-     .post(`${Base_Url}/api/signup`, {
-       ownerName: owner,
-       showroomName: sname,
-       cnic: cnic,
-       contactNumber: contact,
-       address: address,
-       email: email,
-       password: password,
-       role: "showroom",
-     })
-     .then((response) => {
-       console.log(response);
-       console.log(response.data);
-       console.log(response.status);
-       if (response.status === 201) {
-         Toast(response.data, "sucess", navigate("/login"));
-       }
-     })
-     .catch((error) => {
-       if (error.response.status === 400) {
-         Toast(error.response.data, "danger");
-       }
-       Toast(error.response, "error");
-     });
-  }
+    if (license === "") {
+      Toast("License or Registration number is required", "error");
+      return;
+    }
+    axios
+      .post(`${Base_Url}/api/signup`, {
+        ownerName: owner,
+        showroomName: sname,
+        cnic: cnic,
+        contactNumber: contact,
+        address: address,
+        email: email,
+        password: password,
+        role: "showroom",
+        license,
+      })
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+        console.log(response.status);
+        if (response.status === 201) {
+          Toast(response.data, "sucess", navigate("/login"));
+        }
+      })
+      .catch((error) => {
+        if (error.response.status === 400) {
+          Toast(error.response.data, "error");
+        }
+        Toast(error.response, "error");
+      });
+  };
   return (
     <div className="flex items-center justify-center background min-w-max min-h-screen py-16">
       <div className="w-screen h-fit max-w-md py-5 px-7 bg-gray-300 backdrop-blur-lg bg-white/30 border border-white/10 rounded-3xl  p-5 shadow-lg">
@@ -65,7 +72,7 @@ function ShowroomSignUp() {
         />
         <h2 className="text-3xl font-bold text-[#02073F]">Register Showroom</h2>
         <form onSubmit={Handlesubmit} className="mt-8  rounded mb-4">
-        <div className="mb-4 text-center">
+          <div className="mb-4 text-center">
             <label className="block text-sm text-[#02073F] font-bold mb-2">
               Choose Showroom Picture
             </label>
@@ -92,7 +99,9 @@ function ShowroomSignUp() {
             >
               Showroom Name
             </label>
-            <input value={sname} onChange={(e)=>setsname(e.target.value)}
+            <input
+              value={sname}
+              onChange={(e) => setsname(e.target.value)}
               type="text"
               id="Sname"
               placeholder="Cars Club"
@@ -101,8 +110,8 @@ function ShowroomSignUp() {
             />
           </div>
 
-           {/*Owner Name */}
-           <div className="mb-4">
+          {/*Owner Name */}
+          <div className="mb-4">
             <label
               className=" text-sm block text-[#02073F] font-bold mb-2"
               htmlFor="Oname"
@@ -110,7 +119,9 @@ function ShowroomSignUp() {
               Owner Name
             </label>
             <input
-              type="text" value={owner} onChange={(e)=>setowner(e.target.value)}
+              type="text"
+              value={owner}
+              onChange={(e) => setowner(e.target.value)}
               id="Oname"
               placeholder="John Doe"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -127,7 +138,9 @@ function ShowroomSignUp() {
               Owner&#39;s cnic
             </label>
             <input
-              type="text" value={cnic} onChange={(e)=>setcnic(e.target.value)}
+              type="text"
+              value={cnic}
+              onChange={(e) => setcnic(e.target.value)}
               id="cnic"
               placeholder="12345-6789012-3"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -146,7 +159,9 @@ function ShowroomSignUp() {
               Owner&#39;s Contact Number
             </label>
             <input
-              type="tel"  value={contact} onChange={(e)=>setcontact(e.target.value)}
+              type="tel"
+              value={contact}
+              onChange={(e) => setcontact(e.target.value)}
               id="contact"
               placeholder="0300-1234567"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -165,7 +180,9 @@ function ShowroomSignUp() {
               Showroom Address
             </label>
             <input
-              type="text" value={address} onChange={(e)=>setaddress(e.target.value)}
+              type="text"
+              value={address}
+              onChange={(e) => setaddress(e.target.value)}
               id="address"
               placeholder="1234 Main St, City, Country"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
@@ -181,10 +198,30 @@ function ShowroomSignUp() {
             >
               Company/Owner Email
             </label>
-            <input value={email} onChange={(e)=>setemail(e.target.value)}
+            <input
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
               type="email"
               id="email"
               placeholder="name@example.com"
+              className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
+              required
+            />
+          </div>
+          {/* license */}
+          <div className="mb-4">
+            <label
+              className=" text-sm block text-[#02073F] font-bold mb-2"
+              htmlFor="email"
+            >
+              Showroom License or registration
+            </label>
+            <input
+              value={license}
+              onChange={(e) => setLicense(e.target.value)}
+              type="text"
+              id="License"
+              placeholder="12345BB12AA"
               className="shadow placeholder:text-xs appearance-none border rounded w-full py-2 px-3 text-[#02073F] leading-tight focus:outline-none focus:shadow-outline"
               required
             />
@@ -196,9 +233,11 @@ function ShowroomSignUp() {
               className=" text-sm block text-[#02073F] font-bold mb-2"
               htmlFor="password"
             >
-              Password 
+              Password
             </label>
-            <input  value={password} onChange={(e)=>setpassword(e.target.value)}
+            <input
+              value={password}
+              onChange={(e) => setpassword(e.target.value)}
               type="password"
               id="password"
               placeholder="********"
@@ -215,7 +254,9 @@ function ShowroomSignUp() {
             >
               Confirm Password
             </label>
-            <input value={cpassword} onChange={(e)=>setcpassword(e.target.value)}
+            <input
+              value={cpassword}
+              onChange={(e) => setcpassword(e.target.value)}
               type="password"
               id="confirm-password"
               placeholder="********"
