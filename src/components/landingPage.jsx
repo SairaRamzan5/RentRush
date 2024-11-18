@@ -14,26 +14,27 @@ function LandingPage() {
         <div className="flex flex-col background bg-center w-auto sm:w-auto md:w-full lg:w-auto h-1/2 sm:h-1/2 md:h-screen lg:h-screen">
           <div className="info px-16 py-20 lg:w-[60%] sm:w-auto">
             <h1 className="py-4 font-bold text-4xl sm:text-4xl md:text-4xl lg:text-5xl text-white font-poppins">
-              FAST AND EASY WAY TO <span className="text-primary"> RENT</span>{" "}A CAR
+              FAST AND EASY WAY TO <span className="text-primary"> RENT</span> A
+              CAR
             </h1>
             <p className="text-md sm:text-md md:text-md lg:text-xl font-poppins py-9 text-white lg:pr-40">
               Our RentRush online booking system is designed to meet the
               specific needs of car rental business owners. This easy to use car
               rental software will let you manage.
             </p>
-            <div className="buttons flex justify-start gap-6">
+            <div className="buttons flex flex-col sm:flex-row md:flex-row justify-start gap-6 sm:gap-6 md:gap-6">
               <Link
-              to="/signup"
-              className="bg-[#C17D3C] rounded py-3 px-8 text-black font-poppins text-lg font-medium"
-            >
-              BOOKING NOW
-            </Link>
-            <Link
-              to="/showroom/signup"
-              className="bg-transparent border border-[#C17D3C] rounded py-3 px-8 text-white font-poppins font-medium text-lg hover:bg-[#C17D3C] transition-all hover:text-black"
-            >
-              REGISTER SHOWROOM
-            </Link>
+                to="/signup"
+                className="bg-[#C17D3C] rounded py-3 px-8 sm:px-6 md:px-4 text-white font-poppins text-lg font-medium text-center"
+              >
+                BOOKING NOW
+              </Link>
+              <Link
+                to="/showroom/signup"
+                className="bg-transparent border border-[#C17D3C] rounded py-3 px-8 sm:px-6 md:px-4 text-white font-poppins font-medium text-lg text-center hover:bg-[#C17D3C] transition-all "
+              >
+                REGISTER SHOWROOM
+              </Link>
             </div>
           </div>
         </div>
