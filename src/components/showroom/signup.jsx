@@ -5,15 +5,15 @@ import Toast from "../Toast";
 import { useNavigate } from "react-router-dom";
 const Base_Url = import.meta.env.VITE_API_URL;
 function ShowroomSignUp() {
-  const navigate=useNavigate()
-  const [sname, setsname] = useState('')
-  const [owner, setowner] = useState('')
-  const [cnic, setcnic] = useState('')
-  const [contact, setcontact] = useState('')
-  const [address, setaddress] = useState('')
-  const [email, setemail] = useState('')
-  const [password, setpassword] = useState('')
-  const [cpassword, setcpassword] = useState('')
+  const navigate = useNavigate();
+  const [sname, setsname] = useState("");
+  const [owner, setowner] = useState("");
+  const [cnic, setcnic] = useState("");
+  const [contact, setcontact] = useState("");
+  const [address, setaddress] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [cpassword, setcpassword] = useState("");
   const [logo, setLogo] = useState(null);
   const [license, setLicense] = useState("");
 
@@ -81,6 +81,7 @@ function ShowroomSignUp() {
             </div>
             <input
               type="file"
+              name="images"
               accept="image/*"
               onChange={handleLogoChange}
               className="text-sm text-gray-600"
