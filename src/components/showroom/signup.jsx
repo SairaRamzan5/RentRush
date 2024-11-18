@@ -27,7 +27,6 @@ function ShowroomSignUp() {
     e.preventDefault();
     if (password !== cpassword) {
       let msg = "Check your confirm password";
-      console.log(msg);
       Toast(msg, "error");
       return;
     }
@@ -48,9 +47,6 @@ function ShowroomSignUp() {
         license,
       })
       .then((response) => {
-        console.log(response);
-        console.log(response.data);
-        console.log(response.status);
         if (response.status === 201) {
           Toast(response.data, "sucess", navigate("/login"));
         }
@@ -78,7 +74,7 @@ function ShowroomSignUp() {
             </label>
             <div className="flex justify-center items-center mb-4">
               <img
-                src={logo || "/src/assets/avatar-placeholder.png"}
+                src={logo || "/assets/avatar-placeholder.png"}
                 alt=""
                 className="w-24 h-24 object-cover rounded-full border border-gray-300"
               />
