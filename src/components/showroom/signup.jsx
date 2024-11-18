@@ -42,7 +42,6 @@ function ShowroomSignUp() {
     formData.append("role", "showroom");
     if (password !== cpassword) {
       let msg = "Check your confirm password";
-      console.log(msg);
       Toast(msg, "error");
       return;
     }
@@ -80,14 +79,15 @@ function ShowroomSignUp() {
               Choose Showroom Picture
             </label>
             <div className="flex justify-center items-center mb-4">
-              <img 
-                src={logo || "/src/assets/avatar-placeholder.png"} 
+              <img
+                src={logo || "/assets/avatar-placeholder.png"}
                 alt=""
                 className="w-24 h-24 object-cover rounded-full border border-gray-300"
               />
             </div>
             <input
-              type="file" name="images"
+              type="file"
+              name="images"
               accept="image/*"
               onChange={handleLogoChange}
               className="text-sm text-gray-600"
