@@ -80,7 +80,6 @@ const UserDashboard = () => {
             <h2 className="text-2xl text-white font-semibold mb-2">Cars</h2>
             <p className="text-white">Search by car name or car model.</p>
           </div>
-
           <div
             onClick={() => navigate("/customer/showrooms")}
             className="border p-6 rounded-lg shadow-lg bg-primary cursor-pointer hover:shadow-xl duration-300 hover:scale-105 transition-transform transform"

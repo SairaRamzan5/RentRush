@@ -1,72 +1,26 @@
-import React, { useState } from "react";
+import  {useState,useEffect } from "react";
 import ShowroomCard from "./showroomCard";
 import Navbar from "./Navbar";
 import { Search } from "lucide-react";
-
-const showrooms = [
-  {
-    name: "Toyota Camry New",
-    image: "/src/assets/showroom.jpg",
-    location: "Islamabad",
-  },
-  {
-    name: "C-Class – 2023",
-    image: "/src/assets/showroom.jpg",
-    location: "Islamabad",
-  },
-  {
-    name: "Ford Transit – 2021",
-    image: "/src/assets/showroom.jpg",
-    location: "Islamabad",
-  },
-  {
-    name: "New GLC – 2023",
-    image: "/src/assets/showroom.jpg",
-    location: "Islamabad",
-  },
-  {
-    name: "Audi A6 3.5 – New",
-    image: "/src/assets/showroom.jpg",
-    location: "Islamabad",
-  },
-  {
-    name: "Audi A4 4.5 New",
-    image: "/src/assets/showroom.jpg",
-    location: "Islamabad",
-  },
-  {
-    name: "Ranger Black – 2021",
-    image: "/src/assets/showroom.jpg",
-    location: "Islamabad",
-  },
-  {
-    name: "Mercedes-Benz, C Class",
-    image: "/src/assets/showroom.jpg",
-    location: "Islamabad",
-  },
-  {
-    name: "Ranger White – 2022",
-    image: "/src/assets/showroom.jpg",
-    location: "Islamabad",
-  },
-  {
-    name: "T-Cross – 2023",
-    image: "/src/assets/showroom.jpg",
-    location: "Islamabad",
-  },
-  {
-    name: "Corolla Altis – 2023",
-    image: "/src/assets/showroom.jpg",
-    location: "Islamabad",
-  },
-  {
-    name: "Ford Explorer 2023",
-    image: "/src/assets/showroom.jpg",
-    location: "Islamabad",
-  },
-];
+import axios from 'axios'
+const Base_Url = import.meta.env.VITE_API_URL;
 
 const Showrooms = () => {
+  //  call api buildapi for admin show showroom and for this module use same api.
+  const [data, setdata] = useState([])
+  const fetchdata=async()=>{
+    try {
+      const response=await axios.get(`${Base_Url}/api/admin/adminview`);
+    // console.log(response.data.showroomSection)
+    setdata(response.data.showroomSection)
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+useEffect(() => {
+fetchdata();
+},[])
+
   return (
     <>
       <Navbar />
@@ -85,8 +39,8 @@ const Showrooms = () => {
 
       <div className="bg-white flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl px-4 py-10 w-full justify-items-center">
-          {showrooms.map((showroom, index) => (
-            <ShowroomCard key={index} showroom={showroom} />
+          {data.map((value, index) => (
+            <ShowroomCard key={index} showroom={value} />
           ))}
         </div>
       </div>

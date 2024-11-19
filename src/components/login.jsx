@@ -25,7 +25,7 @@ function Login() {
             navigator("/admin");
         } else if (userRole === 'client') {
             Toast("Yahoo! Login Successfull!", "success");
-            navigator("/customer/cars");
+            navigator("/customer/Dashboard");
         } else if (userRole === 'showroom') {
             Toast("Welcome to Showroom!", "success");
             navigator("/showroom/inventory");
