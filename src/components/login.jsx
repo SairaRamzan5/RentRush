@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
 import Toast from "./Toast";
 const Base_Url = import.meta.env.VITE_API_URL;
@@ -17,7 +17,6 @@ function Login() {
             { email: email, password: password },
             { withCredentials: true }
         );
- 
         const userRole = response.data.role;
         localStorage.setItem("token", response.data.token);
         if (userRole === 'admin') {
@@ -25,6 +24,7 @@ function Login() {
             navigator("/admin");
         } else if (userRole === 'client') {
             Toast("Yahoo! Login Successfull!", "success");
+            localStorage.setItem('name',response.data.name)
             navigator("/customer/Dashboard");
         } else if (userRole === 'showroom') {
             Toast("Welcome to Showroom!", "success");

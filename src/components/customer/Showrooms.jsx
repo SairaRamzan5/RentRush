@@ -39,8 +39,8 @@ fetchdata();
 
       <div className="bg-white flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl px-4 py-10 w-full justify-items-center">
-          {data.map((value, index) => (
-            <ShowroomCard key={index} showroom={value} />
+          {data.map((data, index) => (
+            <ShowroomCard key={index} value={data} />
           ))}
         </div>
       </div>

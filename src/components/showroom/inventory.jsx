@@ -20,7 +20,7 @@ function ShowroomInventory() {
         `${Base_Url}/api/car/get-all-cars`,
         { withCredentials: true }
       );
-      setVehicles(response.data); // Set the fetched data to vehicles state
+      setVehicles(response.data); //Set the fetched data to vehicles state
     } catch (err) {
       console.log(err);
       Toast(err.data || err.message || "Something went wrong", "error");

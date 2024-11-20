@@ -1,10 +1,24 @@
-import { Search, User, Calendar, LogOut, House } from "lucide-react";
-import React, { useState } from "react";
+import { User, Calendar, LogOut, House } from "lucide-react";
+import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
-
 const Navbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
+   const [name, setname] = useState('')
+   const [First_letter, setFirst_letter] = useState('')
+   useEffect(() => {
+        const Fetchemail=()=>{
+          try {
+            const userdata=localStorage.getItem('name')
+            if(userdata){
+              setname(userdata);
+              setFirst_letter(userdata.charAt(0));
+            }
+        } catch (error) {
+          console.error(error);
+        }
+        }
+Fetchemail();
+   },[])
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
@@ -28,9 +42,9 @@ const Navbar = () => {
             className="flex items-center space-x-3 hover:cursor-pointer p-1 border border-black rounded-3xl"
           >
             <div className="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center">
-              <span className="text-lg font-bold">S</span>
+              <span className="text-lg font-bold">{First_letter}</span>
             </div>
-            <span className="text-gray-700 font-medium pr-2">Sawera</span>
+            <span className="text-gray-700 font-medium pr-2">{name}</span>
           </div>
 
           {isDropdownOpen && (
