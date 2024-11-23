@@ -10,17 +10,44 @@ const UserBookings = () => {
   const [error, setError] = useState(null);
 
   const fetchBookings = async () => {
+    setLoading(true); // Set loading to true when starting the fetch
     try {
       const response = await axios.get(`${Base_Url}/api/bookcar/my-bookings`, {
         withCredentials: true,
       });
-      setBookings(response.data); // Assuming response.data is an array of bookings
-      console.log(response.data); // Log the data to verify its structure
+
+      // Handle successful response
+      if (response.status === 200) {
+        if (response.data.length === 0) {
+          setError("You have no active bookings, book a car first.");
+          setBookings([]); // Ensure bookings state is empty
+        } else {
+          setBookings(response.data);
+          setError(""); // Clear any previous error
+        }
+      } else if (response.status === 204) {
+        // No content but successful request
+        setError("You have no active bookings, book a car first.");
+        setBookings([]); // No bookings
+      }
     } catch (err) {
-      setError("Failed to fetch bookings");
-      console.error(err);
+      // General error handling
+      if (err.response) {
+        // Server responded with a status code out of the 2xx range
+        if (err.response.status === 404) {
+          setError("You have no active bookings, book a car first."); // Specific message for 404
+        } else {
+          setError("Server error. Please try again later."); // Handle other server errors
+        }
+      } else if (err.request) {
+        // No response received
+        setError("API is not working, failed to fetch bookings.");
+      } else {
+        // Other unexpected errors
+        setError("Failed to fetch bookings.");
+      }
     } finally {
-      setLoading(false);
+      setLoading(false); // Set loading to false after the fetch is complete
     }
   };
 
@@ -39,43 +66,86 @@ const UserBookings = () => {
   return (
     <div>
       <Navbar />
-      <h2 className="text-2xl font-bold mb-4">Your Bookings</h2>
-      {bookings.length === 0 ? (
-        <p>No active bookings found.</p>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {bookings.map((booking) => (
-            <div
-              key={booking._id}
-              className="bg-white shadow-md rounded-lg p-4"
-            >
-              {/* <h3 className="text-lg font-semibold">
-                Booking ID: {booking._id}
-              </h3> */}
-              <p>
-                <strong>Car Brand:</strong> {booking.carDetails.carBrand}
-              </p>
-              <p>
-                <strong>Car Model:</strong> {booking.carDetails.carModel}
-              </p>
-              <p>
-                <strong>Daily Rent:</strong> {booking.carDetails.rentRate}
-              </p>
-              <p><strong>Rental Start:</strong> {new Date(booking.rentalStartDate).toLocaleString()}</p>
-    <p><strong>Rental Start Time:</strong> {booking.rentalStartTime}</p>
-    <p><strong>Rental End:</strong> {new Date(booking.rentalEndDate).toLocaleString()}</p>
-    <p><strong>Rental End Time:</strong> {booking.rentalEndTime}</p>
-    <p><strong>Total Price:</strong> {booking.totalPrice} Rs/-</p>
-              {/* Add more car details as needed */}
+      <div className="px-10">
+        <h2 className="flex justify-center items-center text-2xl font-bold my-4">
+          Your Bookings
+        </h2>
+        {bookings.length === 0 ? (
+          <p>No active bookings found.</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 h-60">
+            {bookings.map((booking) => (
+              <div
+                key={booking._id}
+                className="bg-white shadow-md rounded-lg p-4"
+              >
+                <img
+                  src={`/uploads/${booking.carDetails.images}`}
+                  alt={`${booking.carDetails.carBrand} ${booking.carDetails.carModel}`}
+                  className="w-full h-60 rounded"
+                />
+                <p>
+                  <strong>Car Brand:</strong> {booking.carDetails.carBrand}{" "}
+                  {/* Adjusted to match your schema */}
+                </p>
+                <p>
+                  <strong>Car Model:</strong> {booking.carDetails.carModel}{" "}
+                  {/* Adjusted to match your schema */}
+                </p>
+                <p>
+                  <strong>Daily Rent:</strong> {booking.carDetails.rentRate}{" "}
+                  Rs/- {/* Adjusted to match your schema */}
+                </p>
+                <p>
+                  <strong>Rental Start:</strong>{" "}
+                  {new Date(booking.rentalStartDate).toLocaleString()}
+                </p>
+                <p>
+                  <strong>Rental Start Time:</strong> {booking.rentalStartTime}
+                </p>
+                <p>
+                  <strong>Rental End:</strong>{" "}
+                  {new Date(booking.rentalEndDate).toLocaleString()}
+                </p>
+                <p>
+                  <strong>Rental End Time:</strong> {booking.rentalEndTime}
+                </p>
+                <p>
+                  <strong>Total Price:</strong> {booking.totalPrice} Rs/-
+                </p>
+                <div className="bottom-4 right-4 space-x-4 my-5">
+              <button className="bg-green-600 text-white py-2 px-4 rounded">
+                Edit Details
+              </button>
+              <button className="bg-red-600 text-white py-2 px-4 rounded">
+                Cancel Booking
+              </button>
             </div>
-          ))}
-        </div>
-      )}
+              </div>
+              
+            ))}
+            
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
 export default UserBookings;
+
+// try {
+//   const response = await axios.get(`${Base_Url}/api/bookcar/my-bookings`, {
+//     withCredentials: true,
+//   });
+//   setBookings(response.data);
+//   console.log(response.data);
+// } catch (err) {
+//   setError("Failed to fetch bookings");
+//   console.error(err);
+// } finally {
+//   setLoading(false);
+// }
 
 // export default UserBookings;
 // import React, { useState, useEffect } from "react";
