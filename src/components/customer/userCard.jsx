@@ -21,7 +21,9 @@ const UserCard = ({ car }) => {
       const response = await axios.post(
         `${Base_Url}/api/bookcar/book`,
         {
+          
           carId: car._id,
+          showroomId:car.userId,
           rentalStartDate,
           rentalStartTime,
           rentalEndDate,
