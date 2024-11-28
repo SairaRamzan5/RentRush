@@ -16,10 +16,10 @@ function ShowroomInventory() {
   const [isEditing, setIsEditing] = useState(false);
   const fetchVehicles = async () => {
     try {
-      const response = await axios.get(
-        `${Base_Url}/api/car/get-all-cars`,
-        { withCredentials: true }
-      );
+      const response = await axios.get(`${Base_Url}/api/car/get-all-cars`, {
+        withCredentials: true,
+      });
+      console.log(response);
       setVehicles(response.data); //Set the fetched data to vehicles state
     } catch (err) {
       console.log(err);
@@ -78,11 +78,9 @@ function ShowroomInventory() {
         Toast(response.data.message, "success");
       } else {
         console.log({ formData });
-        const response = await axios.post(
-          `${Base_Url}/api/car/add`,
-          formData,
-          { withCredentials: true }
-        );
+        const response = await axios.post(`${Base_Url}/api/car/add`, formData, {
+          withCredentials: true,
+        });
         Toast(response.data, "success");
         fetchVehicles();
       }
@@ -174,7 +172,7 @@ function ShowroomInventory() {
                     </td>
                     <td className="px-4 py-2 border-b border-gray-700">
                       <img
-                        src={`/uploads/${vehicle.images}`}
+                        src={`/uploads/${vehicle.images[0]}`}
                         alt={vehicle.carBrand + " " + vehicle.carModel}
                         className="w-16 h-16 object-cover"
                       />
