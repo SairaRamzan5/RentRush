@@ -247,15 +247,13 @@ const UserBookings = () => {
                   Rs/-
                 </p>
                 <p>
-                  <strong>Rental Start Date:</strong>{" "}
-                  {new Date(booking.rentalStartDate).toLocaleString()}
+                  <strong>Rental Start Date:</strong> {booking.rentalStartDate}
                 </p>
                 <p>
                   <strong>Rental Start Time:</strong> {booking.rentalStartTime}
                 </p>
                 <p>
-                  <strong>Rental End Date:</strong>{" "}
-                  {new Date(booking.rentalEndDate).toLocaleString()}
+                  <strong>Rental End Date:</strong> {booking.rentalEndDate}
                 </p>
                 <p>
                   <strong>Rental End Time:</strong> {booking.rentalEndTime}
@@ -264,10 +262,12 @@ const UserBookings = () => {
                   <strong>Total Price:</strong> {booking.totalPrice} Rs/-
                 </p>
                 <p>
-                  <strong>ShowroomName:</strong> {booking.showroomDetails.showroomName}
+                  <strong>ShowroomName:</strong>{" "}
+                  {booking.showroomDetails.showroomName}
                 </p>
                 <p>
-                  <strong>ShowroomAddress</strong> {booking.showroomDetails.address}
+                  <strong>ShowroomAddress</strong>{" "}
+                  {booking.showroomDetails.address}
                 </p>
                 <div className="bottom-4 right-4 space-x-4 my-5">
                   <button
