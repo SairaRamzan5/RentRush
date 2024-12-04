@@ -30,24 +30,42 @@ console.log(cars)
   return (
     <>
       <Navbar />
-      <div className="mt-4 flex justify-center">
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Search"
-            className="border border-gray-300 rounded-full pl-4 pr-10 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-            <Search />
+      <div className="bg-[#FFFFFF] opacity-[25%] py-2 mt-5">
+        <div className="mt-4 flex px-12 flex-col">
+          <div>
+            <span>home/shop</span>
           </div>
+          <div className="flex justify-between">
+            <h1 className="text-[40px]">Shop</h1>
+            <div>
+              sort by
+              <select name="car-typ" id="">
+                <option>Default</option>
+                <option value="honda">honda</option>
+                <option value="toyota">toyota</option>
+                <option value="hundayi">hundayi</option>
+              </select>
+            </div>
+          </div>
+          <span>Showing 1 – 12 of 15 results</span>
+
+          {/* <div className="relative">
+            <input
+              type="text"
+              placeholder="Search"
+              className="border border-gray-300 rounded-full pl-4 pr-10 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+              <Search />
+            </div>
+          </div> */}
         </div>
-      </div>
-      <div className="bg-white flex justify-center">
-        <div className="grid grid-cols-1 items-center justify-center sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl py-10 w-full justify-items-center">
-          {cars.map((car, index) => (
-            <UserCard key={index} car={car} />
-            
-          ))}
+        <div className="px-[3rem] ">
+          <div className="flex flex-wrap  justify-between gap-y-8">
+            {cars.map((car, index) => (
+              <UserCard key={index} car={car} />
+            ))}
+          </div>
         </div>
       </div>
     </>
