@@ -32,7 +32,7 @@ const Navbar = () => {
     }
   }
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50 h-[93px] flex justify-between items-center w-[100%]">
+    <nav className="bg-white shadow-md sticky top-0 z-50 h-[70px] flex justify-between items-center w-[100%]">
       <div className="mx-auto px-4 flex justify-between items-center w-[100%]">
         <div className="flex items-center">
           <Link to="/">

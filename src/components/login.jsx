@@ -41,7 +41,7 @@ function Login() {
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center background h-[calc(100vh-93px)]">
+      <div className="flex items-center justify-center background h-[calc(100vh-70px)]">
         <div className="w-screen max-w-md py-5 px-8 bg-gray-300 backdrop-blur-lg bg-white/30 border border-white/10 rounded-3xl shadow-lg">
           <img src="/src/assets/logo.svg" className="-ml-4 p" alt="" />
           <h2 className="pt-2 font-bold text-[35px] text-[#02073F] ml-5 ">
