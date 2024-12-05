@@ -26,30 +26,30 @@ useEffect(() => {
   fetchVehicles();
 }, []);
 console.log(cars)
-
-  return (
-    <>
-      <Navbar />
-      <div className="bg-[#FFFFFF] opacity-[25%] py-2 mt-5">
-        <div className="mt-4 flex px-12 flex-col">
+let cars_no = 0;
+return (
+  <>
+    <Navbar />
+    <div className="bg-[#FFFFFF]  py-2 mt-5">
+      <div className="mt-4 flex px-12 flex-col">
+        <div>
+          <span>home/shop</span>
+        </div>
+        <div className="flex justify-between">
+          <h1 className="text-[40px]">Shop</h1>
           <div>
-            <span>home/shop</span>
+            sort by
+            <select name="car-typ" id="">
+              <option>Default</option>
+              <option value="honda">honda</option>
+              <option value="toyota">toyota</option>
+              <option value="hundayi">hundayi</option>
+            </select>
           </div>
-          <div className="flex justify-between">
-            <h1 className="text-[40px]">Shop</h1>
-            <div>
-              sort by
-              <select name="car-typ" id="">
-                <option>Default</option>
-                <option value="honda">honda</option>
-                <option value="toyota">toyota</option>
-                <option value="hundayi">hundayi</option>
-              </select>
-            </div>
-          </div>
-          <span>Showing 1 – 12 of 15 results</span>
+        </div>
+        <span>{`Showing 1 – 12 of ${cars.length} results`}</span>
 
-          {/* <div className="relative">
+        {/* <div className="relative">
             <input
               type="text"
               placeholder="Search"
@@ -59,17 +59,18 @@ console.log(cars)
               <Search />
             </div>
           </div> */}
-        </div>
-        <div className="px-[3rem] ">
-          <div className="flex flex-wrap  justify-between gap-y-8">
-            {cars.map((car, index) => (
-              <UserCard key={index} car={car} />
-            ))}
-          </div>
+      </div>
+      <div className="px-[3rem] bg-[#fff]">
+        <div className="flex flex-wrap  justify-between gap-y-8">
+          {cars.map((car, index) => {
+            const cars_no = index; // Assign cars_no to index before returning the JSX.
+            return <UserCard key={index} car={car} cars_no={cars_no} />;
+          })}
         </div>
       </div>
-    </>
-  );
+    </div>
+  </>
+);
 };
 
 export default Cars;
