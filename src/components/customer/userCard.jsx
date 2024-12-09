@@ -5,6 +5,7 @@ import Toast from "../Toast";
 const Base_Url = import.meta.env.VITE_API_URL;
 
 const UserCard = ({ car }) => {
+  // console.log(car);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [rentalStartDate, setRentalStartDate] = useState("");
@@ -21,9 +22,8 @@ const UserCard = ({ car }) => {
       const response = await axios.post(
         `${Base_Url}/api/bookcar/book`,
         {
-          
           carId: car._id,
-          showroomId:car.userId,
+          showroomId: car.userId,
           rentalStartDate,
           rentalStartTime,
           rentalEndDate,
@@ -77,10 +77,9 @@ const UserCard = ({ car }) => {
 
   return (
     <div className="bg-white shadow-2xl rounded-lg overflow-hidden w-64 relative">
-      
       <div className="relative">
         <img
-          src={`/uploads/${car.images}`}
+          src={`/uploads/${car.images[0]}`}
           alt={car.name}
           className="w-full h-40 object-cover"
         />
@@ -138,16 +137,16 @@ const UserCard = ({ car }) => {
             <div className="flex flex-col items-center space-y-6 border">
               <h2 className="text-2xl font-bold">{car.name}</h2>
               <img
-                src={`/uploads/${car.images}`}
+                src={`/uploads/${car.images[0]}`}
                 alt={car.name}
                 className="w-96 h-60 object-contain rounded mb-4 border shadow-lg bg-gray-100"
               />
               <div className="flex justify-between gap-2 mb-4">
-                {car.gallery?.map((img, index) => (
+                {car.images?.map((item, index) => (
                   <img
                     key={index}
-                    src={`/uploads/${car.images}`}
-                    alt={`Car ${index}`}
+                    src={`/uploads/${item}`}
+                    alt={`Car`}
                     className="w-1/5 h-20 object-contain rounded mb-4 border shadow-lg bg-gray-100"
                   />
                 )) || (
