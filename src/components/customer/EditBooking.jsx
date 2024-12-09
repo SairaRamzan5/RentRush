@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from './Navbar';
 
 const EditBookingModal = ({ booking, isOpen, onClose, onUpdate }) => {
   const [rentalStartDate, setRentalStartDate] = useState(booking.rentalStartDate);
@@ -21,6 +22,8 @@ const EditBookingModal = ({ booking, isOpen, onClose, onUpdate }) => {
   if (!isOpen) return null;
 
   return (
+    <>
+    <Navbar/>
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
   <div className="bg-white rounded-lg shadow-lg p-6 w-11/12 max-w-md">
     <h2 className="text-xl font-semibold mb-4">Edit Booking</h2>
@@ -79,6 +82,8 @@ const EditBookingModal = ({ booking, isOpen, onClose, onUpdate }) => {
     </form>
   </div>
 </div>
+    </>
+    
   );
 };
 
