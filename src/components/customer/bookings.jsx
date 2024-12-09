@@ -61,7 +61,7 @@ const UserBookings = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar/>
       <div className="px-10">
         <h2 className="flex justify-start items-start text-2xl font-bold my-4">
           Bookings
