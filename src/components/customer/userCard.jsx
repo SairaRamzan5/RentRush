@@ -95,10 +95,10 @@ const UserCard = ({ car }) => {
             <CircleGauge />
             <span className="text-gray-500">{car.mileage}</span>
           </div>
-          <div className="flex flex-col items-center">
+          {/* <div className="flex flex-col items-center">
             <Fuel />
             <span className="text-gray-500">{car.fuelType}</span>
-          </div>
+          </div> */}
           <div className="flex flex-col items-center">
             <GripHorizontal />
             <span className="text-gray-500">{car.transmission}</span>

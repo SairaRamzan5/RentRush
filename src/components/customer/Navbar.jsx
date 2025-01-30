@@ -45,9 +45,11 @@ const Navbar = () => {
             <div className="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center">
               <span className="text-lg font-bold">{First_letter}</span>
             </div>
-            <span className="text-gray-700 font-medium pr-2">{name}</span>
+            {/* <span className="text-gray-700 font-medium pr-2">{name}</span> */}
           </div>
-
+<div>
+  
+</div>
           {isDropdownOpen && (
             <div className="absolute top-12 right-0 w-48 bg-white shadow-lg rounded-lg py-2 z-50">
               <Link

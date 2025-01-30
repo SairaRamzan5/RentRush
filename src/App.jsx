@@ -12,6 +12,7 @@ import Showrooms from "./components/customer/showrooms.jsx";
 import Bookings from "./components/customer/bookings.jsx";
 import Adminpage from "./components/admin/Adminpage.jsx";
 import ProtectedLayout from "./auth/protectedRoute.jsx";
+import FilterSidebar from "./components/customer/FilterSidebar.jsx";
 function App() {
   return (
     <>
@@ -33,8 +34,12 @@ function App() {
               element={<ShowroomInventory />}
             ></Route>
             <Route
-              path="/customer/Dashboard"
+              path="/customer/dashboard"
               element={<CarsDashboard />}
+            ></Route>
+            <Route
+              path="/customer/customer-dashboard"
+              element={<FilterSidebar />}
             ></Route>
             <Route path="/customer/profile" element={<UserProfile />}></Route>
             <Route path="/customer/cars" element={<Cars />}></Route>
