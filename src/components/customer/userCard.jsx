@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import {useState} from "react";
 import { CircleGauge, Fuel, GripHorizontal } from "lucide-react";
 import axios from "axios";
 import Toast from "../Toast";
@@ -124,7 +124,6 @@ const UserCard = ({ car }) => {
           </button>
         </div>
       </div>
-
       {showDetailsModal && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg relative w-4/5 h-4/5 overflow-y-auto">
@@ -189,7 +188,6 @@ const UserCard = ({ car }) => {
           </div>
         </div>
       )}
-
       {showBookingModal && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg relative h-auto w-96">

@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import Navbar from "../customer/Navbar";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";

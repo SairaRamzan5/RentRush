@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import UserCard from "./userCard";
 import Navbar from "./Navbar";
-import { Search } from "lucide-react";
-import axios from "axios";
+// import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+// import { Link } from "react-router-dom";
 import Toast from "../Toast";
 const Base_Url = import.meta.env.VITE_API_URL;
 
@@ -26,9 +27,9 @@ const Cars = () => {
     fetchVehicles();
   }, []);
   console.log(cars);
-  let cars_no = 0;
+  // let cars_no = 0;
   return (
-    <div className="bg-[#343434]">
+    <div>
       <Navbar />
       <div className="bg-gray-100/25 py-2 mt-5 rounded-xl">
         <div className="mt-4 flex px-12 flex-col">
@@ -45,7 +46,7 @@ const Cars = () => {
           </div>
           <div className="flex justify-between">
             <h1 className="text-[40px] text-[#0B132A]">Shop</h1>
-            <div className="gap-3 text-[#050B20]">
+            <div className="gap-3  text-[#050B20]">
               <span className="mr-3">Sort by</span>
               <select
                 name="car-typ"
@@ -57,6 +58,7 @@ const Cars = () => {
                 <option value="toyota">toyota</option>
                 <option value="hundayi">hundayi</option>
               </select>
+      <Link to={"/customer/bookings"}><button className="mx-8 bg-red-700 text-white px-2 py-2 rounded-lg">you booking </button></Link>
             </div>
           </div>
           <span className="my-5">{`Showing 1 – 12 of ${cars.length} results`}</span>

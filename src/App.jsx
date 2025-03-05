@@ -12,6 +12,7 @@ import Showrooms from "./components/customer/showrooms.jsx";
 import Bookings from "./components/customer/bookings.jsx";
 import Adminpage from "./components/admin/Adminpage.jsx";
 import ProtectedLayout from "./auth/protectedRoute.jsx";
+import EditBookingModal from '../src/components/customer/EditBooking.jsx'
 function App() {
   return (
     <>
@@ -41,6 +42,8 @@ function App() {
             <Route path="/customer/Showrooms" element={<Showrooms />}></Route>
             <Route path="/customer/bookings" element={<Bookings />}></Route>
             <Route path="/admin" element={<Adminpage />}></Route>
+            <Route path="/customer/editbooking" element={<EditBookingModal></EditBookingModal>}></Route>
+            
           </Route>
         </Routes>
       </BrowserRouter>

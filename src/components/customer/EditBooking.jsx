@@ -1,29 +1,50 @@
-import React, { useState } from 'react';
-import Navbar from './Navbar';
-
-const EditBookingModal = ({ booking, isOpen, onClose, onUpdate }) => {
+import { useState } from 'react';
+import axios from 'axios';
+import Toast from "../Toast";
+const Base_Url = import.meta.env.VITE_API_URL;
+const EditBookingModal = ( { booking, isOpen, onClose}) => {
   const [rentalStartDate, setRentalStartDate] = useState(booking.rentalStartDate);
   const [rentalEndDate, setRentalEndDate] = useState(booking.rentalEndDate);
   const [rentalStartTime, setRentalStartTime] = useState(booking.rentalStartTime);
   const [rentalEndTime, setRentalEndTime] = useState(booking.rentalEndTime);
-
+  console.log("booking from props",booking._id)
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedBooking = {
-      rentalStartDate,
-      rentalEndDate,
-      rentalStartTime,
-      rentalEndTime,
-    };
-    await onUpdate(booking._id, updatedBooking);
+    try {
+      const response = await axios.put(`${Base_Url}/api/bookcar/update/${booking._id}`,{
+          rentalStartDate: rentalStartDate,
+          rentalEndDate: rentalEndDate,
+          rentalStartTime: rentalStartTime,
+          rentalEndTime: rentalEndTime,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log("response update booking", response.data);
+      Toast(response.data.message,"success")
+    } catch (error) {
+      if (error.response) {
+        console.log("Error Response Data:", error.response.data); // Backend ka exact response
+        console.log("Error Status:", error.response.status); // 400 confirm karne ke liye
+        Toast(error.response.data.message,"error")
+      } else {
+        console.log("error in edit booking", error.message);
+      }
+    }
+    // const updatedBooking = {
+    //   rentalStartDate,
+    //   rentalEndDate,
+    //   rentalStartTime,
+    //   rentalEndTime,
+    // };
+    // await onUpdate(booking._id, updatedBooking);
     onClose(); // Close the modal after updating
   };
-
   if (!isOpen) return null;
-
   return (
     <>
-    <Navbar/>
+    {/* <Navbar/> */}
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
   <div className="bg-white rounded-lg shadow-lg p-6 w-11/12 max-w-md">
     <h2 className="text-xl font-semibold mb-4">Edit Booking</h2>

@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
-
+import Toast from "../Toast";
+import EditBookingModal from './EditBooking.jsx';
 const Base_Url = import.meta.env.VITE_API_URL;
-
 const UserBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [ModelOpen, setModelOpen] = useState(false)
 
   const fetchBookings = async () => {
     setLoading(true);
@@ -15,12 +16,12 @@ const UserBookings = () => {
       const response = await axios.get(`${Base_Url}/api/bookcar/my-bookings`, {
         withCredentials: true,
       });
-        
 
       if (response.status === 200 && response.data && response.data.length > 0) {
         setBookings(response.data);
         if (response.data.length === 0) {
           setError("You have no active bookings, book a car first.");
+          Toast("You have no active bookings, book a car first.","error")
           setBookings([]);
         } else {
           setBookings(response.data);
@@ -28,12 +29,14 @@ const UserBookings = () => {
         }
       } else if (response.status === 204) {
         setError("You have no active bookings, book a car first.");
+        Toast("You have no active bookings, book a car first.","error")
         setBookings([]);
       }
     } catch (err) {
       if (err.response) {
         if (err.response.status === 404) {
           setError("You have no active bookings, book a car first.");
+          Toast("You have no active bookings, book a car first.","error")
         } else {
           setError("Server error. Please try again later.");
         }
@@ -46,7 +49,6 @@ const UserBookings = () => {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     fetchBookings();
   }, []);
@@ -58,7 +60,30 @@ const UserBookings = () => {
   if (error) {
     return <div>{error}</div>;
   }
-
+// Cancle booking api calling function 
+ const CancleFunction=(bookingId)=>{
+  try {
+    const response=axios.delete(`${Base_Url}/api/bookcar/cancel/${bookingId}`,{
+      withCredentials: true,
+    }
+  )
+  setBookings((prevBookings) => {
+    const updatedBookings = prevBookings.filter(booking => booking._id !== bookingId);
+    console.log("Updated Bookings:", updatedBookings);
+    return updatedBookings;
+  });
+  console.log(response);
+  Toast("BOOKING DELETE SUCESSFULLY","success");
+  } catch (error) {
+    if (error.response) {
+    console.log("Error Response Data:", error.response.data); // Backend ka exact response
+    console.log("Error Status:", error.response.status); // 400 confirm karne ke liye
+    Toast(error.response.data.message,"error")
+    } else {
+    console.log("error in edit booking", error.message);
+    }
+  }
+ }
   return (
     <div>
       <Navbar/>
@@ -74,7 +99,7 @@ const UserBookings = () => {
               <div
                 key={booking._id}
                 className="bg-white shadow-md rounded-lg p-4 relative"
-                style={{ width: "391px", height: "320px" }}
+                style={{ width: "400px", height: "350px" }}
               >
                 <div className="flex justify-between items-center mb-3 ">
                   <div>
@@ -148,6 +173,13 @@ const UserBookings = () => {
                   </p>
                 </div>
                 <p className="text-lg font-bold">{booking.carDetails.rentRate} Rs/d</p>
+                {/* Add button update booking */}
+                <div className="space-x-12">
+                <button onClick={()=>setModelOpen(true)}  className="px-3 py-2 bg-red-300 rounded-lg ">Update booking</button>
+                <button onClick={()=>CancleFunction(booking._id)}  className="bg-red-700 text-white px-2 py-3 font-bold rounded-lg">Cancle booking</button>
+                </div>
+                {/* open dialop edit booking model*/}
+                <EditBookingModal booking={booking} isOpen={ModelOpen} onClose={()=>setModelOpen(false)}/>
               </div>
             ))}
           </div>
